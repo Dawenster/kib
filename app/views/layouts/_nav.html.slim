@@ -83,7 +83,7 @@ header#topnav
                     i.ti-lock.m-r-5
                     | Lock screen
                 li
-                  a href="javascript:void(0)" 
+                  = link_to(destroy_user_session_path, :method => :delete) do
                     i.ti-power-off.m-r-5
                     | Logout
 
