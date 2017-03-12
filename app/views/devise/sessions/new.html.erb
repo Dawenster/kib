@@ -1,7 +1,7 @@
 <div class="wrapper-page">
 
   <div class="text-center">
-    <a href="<%= new_user_registration_path %>" class="logo logo-lg"><i class="md md-equalizer"></i> <span>Sign up</span> </a>
+    <a href="<%= session_path(resource_name) %>" class="logo logo-lg"><i class="md md-equalizer"></i> <span>Login</span> </a>
   </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal m-t-20"}) do |f| %>

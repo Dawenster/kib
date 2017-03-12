@@ -1,16 +1,31 @@
-<h2>Forgot your password?</h2>
+<div class="wrapper-page">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="text-center">
+    <a href="<%= password_path(resource_name) %>" class="logo logo-lg"><i class="md md-equalizer"></i> <span>Forgot password</span> </a>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-horizontal m-t-20" }) do |f| %>
+    <%= devise_error_messages! %>
 
-<%= render "devise/shared/links" %>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+        <i class="fa fa-envelope form-control-feedback l-h-34"></i>
+      </div>
+    </div>
+
+    <div class="form-group text-right m-t-20">
+      <div class="col-xs-12">
+        <%= f.button "Send me reset password instructions", class: "btn btn-primary btn-custom waves-effect waves-light w-md" %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <div class="form-group m-t-30">
+    <div class="col-sm-12 text-center">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+
+</div>
