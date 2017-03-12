@@ -11,8 +11,10 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require material_icons
  *= require_self
  */
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "material";
