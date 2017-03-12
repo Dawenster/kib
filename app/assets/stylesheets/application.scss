@@ -18,3 +18,15 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "material";
+@import "material_icons";
+
+@font-face {
+  font-family: 'Material-Design-Iconic-Font';
+  src: font-url('Material-Design-Iconic-Font.woff');
+  src: font-url('Material-Design-Iconic-Font.eot?#iefix') format('embedded-opentype'),
+    font-url('Material-Design-Iconic-Font.svg#Material-Design-Iconic-Font') format('svg'),
+    font-url('Material-Design-Iconic-Font.woff') format('woff'),
+    font-url('Material-Design-Iconic-Font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
