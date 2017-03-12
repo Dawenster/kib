@@ -15,6 +15,13 @@
  *= require_self
  */
 
+body, html {
+ font-family: 'Roboto' !important;
+  h1, h2, h3, h4, h5, h6, p, a {
+   font-family: 'Roboto' !important;
+  }
+}
+
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "material";
@@ -27,6 +34,64 @@
     font-url('Material-Design-Iconic-Font.svg#Material-Design-Iconic-Font') format('svg'),
     font-url('Material-Design-Iconic-Font.woff') format('woff'),
     font-url('Material-Design-Iconic-Font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'fontawesome-webfont';
+  src: font-url('fontawesome-webfont.woff');
+  src: font-url('fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+    font-url('fontawesome-webfont.svg#fontawesome-webfont') format('svg'),
+    font-url('fontawesome-webfont.woff') format('woff'),
+    font-url('fontawesome-webfont.woff2') format('woff'),
+    font-url('fontawesome-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'glyphicons-halflings-regular';
+  src: font-url('glyphicons-halflings-regular.woff');
+  src: font-url('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    font-url('glyphicons-halflings-regular.svg#glyphicons-halflings-regular') format('svg'),
+    font-url('glyphicons-halflings-regular.woff') format('woff'),
+    font-url('glyphicons-halflings-regular.woff2') format('woff'),
+    font-url('glyphicons-halflings-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ionicons';
+  src: font-url('ionicons.woff');
+  src: font-url('ionicons.eot?#iefix') format('embedded-opentype'),
+    font-url('ionicons.svg#ionicons') format('svg'),
+    font-url('ionicons.woff') format('woff'),
+    font-url('ionicons.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'themify';
+  src: font-url('themify.woff');
+  src: font-url('themify.eot?#iefix') format('embedded-opentype'),
+    font-url('themify.svg#themify') format('svg'),
+    font-url('themify.woff') format('woff'),
+    font-url('themify.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'weathericons-regular-webfont';
+  src: font-url('weathericons-regular-webfont.woff');
+  src: font-url('weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    font-url('weathericons-regular-webfont.svg#weathericons-regular-webfont') format('svg'),
+    font-url('weathericons-regular-webfont.woff') format('woff'),
+    font-url('weathericons-regular-webfont.woff2') format('woff'),
+    font-url('weathericons-regular-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
