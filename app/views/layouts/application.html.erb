@@ -8,6 +8,7 @@
   </head>
   <body class="fixed-left widescreen">
     <%= render "layouts/nav" %>
+    <%= render "layouts/notices_and_alerts" %>
     <% if params[:controller] == "pages" && params[:action] == "landing" %>
       <%= yield %>
     <% else %>
@@ -15,12 +16,6 @@
         <div class="container">
           <div class="content-page">
             <div class="content">
-              <% if notice.present? %>
-                <p class="notice alert alert-success"><%= notice %></p>
-              <% end %>
-              <% if alert.present? %>
-                <p class="alert alert alert-danger"><%= alert %></p>
-              <% end %>
               <%= yield %>
             </div>
           </div>
