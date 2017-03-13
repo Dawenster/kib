@@ -75,13 +75,9 @@ header#topnav
                     i.ti-user.m-r-5
                     | Profile
                 li
-                  a href="javascript:void(0)" 
+                  a href="#{edit_user_registration_path}" 
                     i.ti-settings.m-r-5
-                    | Settings
-                li
-                  a href="javascript:void(0)" 
-                    i.ti-lock.m-r-5
-                    | Lock screen
+                    | Account settings
                 li
                   = link_to(destroy_user_session_path, :method => :delete) do
                     i.ti-power-off.m-r-5
