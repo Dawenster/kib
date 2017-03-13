@@ -5,7 +5,7 @@ module DeviseHelper
     messages = resource.errors.full_messages.to_sentence.downcase.capitalize
     sentence = I18n.t("errors.messages.not_saved", :count => resource.errors.count, :resource => resource.class.model_name.human.downcase)
 
-    flash[:alert] = messages.html_safe
+    flash.now[:alert] = messages.html_safe
     return ""
   end
 
