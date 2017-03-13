@@ -14,7 +14,8 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -40,9 +41,13 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Mailgun setup
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV["MAILGUN_API_KEY"],
-    domain: 'localhost:3000',
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => ENV["MAILGUN_DOMAIN"],
+    :user_name => ENV["MAILGUN_USER_NAME"],
+    :password => ENV["MAILGUN_PASSWORD"]
   }
 end
