@@ -78,9 +78,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Mailgun setup
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV["MAILGUN_API_KEY"],
-    domain: 'kellogg-in-a-bottle.herokuapp.com'
+  # Mailgun setup
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => ENV["MAILGUN_DOMAIN"],
+    :user_name => ENV["MAILGUN_USER_NAME"],
+    :password => ENV["MAILGUN_PASSWORD"]
   }
 end
