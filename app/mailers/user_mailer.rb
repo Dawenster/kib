@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
   def welcome_email(user)
     @user = user
-    @url  = 'http://example.com/login'
+    @url  = Rails.application.routes.url_helpers.root_url(host: ENV["HOST"])
     mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   end
 end
