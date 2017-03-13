@@ -11,9 +11,12 @@ header#topnav
 
         ul.nav.navbar-nav.navbar-right.pull-right
           li
-            form.navbar-left.app-search.pull-left.hidden-xs role="search"
-              input.form-control type="text" placeholder="Search..."
-                a href=""
+            = link_to "Courses", courses_path
+
+          li
+            form.navbar-left.app-search.pull-left.hidden-xs role="search" action="#{courses_path}" method="get"
+              input.form-control type="text" placeholder="Search course" name="s" value="#{@searched_term.present? ? @searched_term : nil}"
+                a type="submit"
                   i.fa.fa-search
 
           - if user_signed_in?
