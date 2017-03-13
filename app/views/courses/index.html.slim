@@ -1,15 +1,16 @@
-.row
-  .col-xs-6.col-sm-offset-3
-    #course-category-accordian.panel-group
-      - @course_categories.each_with_index do |cc, i|
-        .panel.panel-default
-          .panel-heading
-            h4.panel-title
-              a data-toggle="collapse" data-parent="#course-category-accordian" href="##{cc.code}" aria-expanded="#{i == 0 ? 'true' : 'false'}" class="#{i == 0 ? 'expanded' : 'collapsed'}"
-                = cc.name
-          .panel-collapse.collapse id="#{cc.code}" class="#{'in' if i == 0}" aria-expanded="#{i == 0 ? 'true' : 'false'}"
-            .panel-body
-              ul
-                - cc.courses.where(id: @course_ids).each do |course|
-                  li
-                    = "#{course.code}: #{course.name}"
+.course-index
+  .row
+    .col-md-6.col-md-offset-3
+      #course-category-accordian.panel-group
+        - @course_categories.each_with_index do |cc, i|
+          .panel.panel-default
+            .panel-heading
+              h4.panel-title
+                a data-toggle="collapse" data-parent="#course-category-accordian" href="##{cc.code}" aria-expanded="#{i == 0 ? 'true' : 'false'}" class="#{i == 0 ? 'expanded' : 'collapsed'}"
+                  = cc.name
+            .panel-collapse.collapse id="#{cc.code}" class="#{'in' if i == 0}" aria-expanded="#{i == 0 ? 'true' : 'false'}"
+              .panel-body
+                ul
+                  - cc.courses.where(id: @course_ids).each do |course|
+                    li
+                      = "#{course.code}: #{course.name}"
