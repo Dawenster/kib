@@ -68,7 +68,8 @@ header#topnav
 
             li.dropdown
               a.dropdown-toggle.waves-effect.waves-light.profile aria-expanded="true" data-toggle="dropdown" href="" 
-                img.img-circle alt="user-img" src=""
+                i.fa.fa-user-o
+                = " #{current_user.first_name}"
               ul.dropdown-menu
                 li
                   a href="javascript:void(0)" 
