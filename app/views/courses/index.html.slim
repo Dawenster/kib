@@ -1,6 +1,6 @@
 .course-index
   .row
-    .col-md-6.col-md-offset-3
+    .col-md-8.col-md-offset-2
       #course-category-accordian.panel-group
         - @course_categories.each_with_index do |cc, i|
           .panel.panel-default
@@ -10,10 +10,19 @@
                   = cc.name
             .panel-collapse.collapse id="#{cc.code}" class="#{'in' if i == 0}" aria-expanded="#{i == 0 ? 'true' : 'false'}"
               .panel-body
-                ul
-                  - cc.courses.order(:name).where(id: @course_ids).each do |course|
-                    li
-                      = "#{course.code}: #{course.name}"
+                table.table.table-hover
+                  thead
+                    tr
+                      th Code
+                      th Name
+                      th
+                  tbody
+                    - cc.courses.order(:name).where(id: @course_ids).each do |course|
+                      tr
+                        td = course.code
+                        td = course.name
+                        td = link_to "Select", "", class: "btn btn-primary btn-xs waves-effect waves-light m-b-5"
+
   - if @searched_term.present?
     .row
       .col-md-2.col-md-offset-5
