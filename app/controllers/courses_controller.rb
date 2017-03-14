@@ -11,6 +11,6 @@ class CoursesController < ApplicationController
       @course_categories = CourseCategory.order(:name).joins(:courses).group("course_categories.id")
       @course_ids = Course.pluck(:id)
     end
-    flash[:alert] = "No courses matching your search for '#{@searched_term}'" if @course_ids.empty?
+    flash.now[:alert] = "No courses matching your search for '#{@searched_term}'" if @course_ids.empty? && !@searched_term.blank?
   end
 end
