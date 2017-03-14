@@ -14,3 +14,7 @@
                   - cc.courses.order(:name).where(id: @course_ids).each do |course|
                     li
                       = "#{course.code}: #{course.name}"
+  - if @searched_term.present?
+    .row
+      .col-md-2.col-md-offset-5
+        = link_to "Clear search", courses_path, class: "btn btn-primary waves-effect w-md waves-light m-b-5 center-block"
