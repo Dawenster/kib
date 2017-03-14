@@ -11,6 +11,6 @@
             .panel-collapse.collapse id="#{cc.code}" class="#{'in' if i == 0}" aria-expanded="#{i == 0 ? 'true' : 'false'}"
               .panel-body
                 ul
-                  - cc.courses.where(id: @course_ids).each do |course|
+                  - cc.courses.order(:name).where(id: @course_ids).each do |course|
                     li
                       = "#{course.code}: #{course.name}"
