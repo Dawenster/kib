@@ -10,7 +10,7 @@ header#topnav
       .menu-extras
 
         ul.nav.navbar-nav.navbar-right.pull-right
-          li
+          li.hidden-xs
             = link_to "Courses", courses_path
 
           li
@@ -70,9 +70,11 @@ header#topnav
                         | See all notifications
 
             li.dropdown
-              a.dropdown-toggle.waves-effect.waves-light.profile aria-expanded="true" data-toggle="dropdown" href="" 
+              a.dropdown-toggle.waves-effect.waves-light.profile.hidden-xs aria-expanded="true" data-toggle="dropdown" href=""
                 i.fa.fa-user-o
                 = " #{current_user.first_name}"
+              a.dropdown-toggle.waves-effect.waves-light.profile.visible-xs aria-expanded="true" data-toggle="dropdown" href=""
+                i.fa.fa-user-o
               ul.dropdown-menu
                 li
                   a href="javascript:void(0)" 
@@ -89,9 +91,9 @@ header#topnav
 
           - else
 
-            li
+            li.hidden-xs
               = link_to "Login", new_user_session_path
-            li
+            li.hidden-xs
               = link_to "Sign up", new_user_registration_path
 
         .menu-item
@@ -100,3 +102,16 @@ header#topnav
               span
               span
               span
+
+  .navbar-custom.navbar-hide-on-xs.visible-xs
+    .container
+      #navigation
+        ul.navigation-menu
+          li
+            = link_to "Courses", courses_path
+          - if user_signed_in?
+          - else
+            li
+              = link_to "Login", new_user_session_path
+            li
+              = link_to "Sign up", new_user_registration_path

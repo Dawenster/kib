@@ -5,7 +5,7 @@
 */
 
 
-(function($){
+$(document).ready(function() {
 
   'use strict';
 
@@ -14,6 +14,7 @@
     $('.navbar-toggle').on('click', function(event) {
       $(this).toggleClass('open');
       $('#navigation').slideToggle(400);
+      $(".navbar-custom").toggleClass("navbar-hide-on-xs")
     });
 
     $('.navigation-menu>li').slice(-1).addClass('last-elements');
@@ -43,6 +44,4 @@
   }
 
   init();
-
-})(jQuery)
-
+})
