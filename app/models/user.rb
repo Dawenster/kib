@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   validates_inclusion_of :program, :in => VALID_PROGRAMS, message: "must be selected"
   validates_inclusion_of :graduation_year, :in => VALID_YEARS, message: "must be between #{VALID_YEAR_START} and #{VALID_YEAR_END}"
 
+  def is_admin?
+    !!admin
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
