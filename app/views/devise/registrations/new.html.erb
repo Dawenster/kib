@@ -16,6 +16,13 @@
 
     <div class="form-group">
       <div class="col-xs-12">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+        <i class="fa fa-key form-control-feedback l-h-34"></i>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-12">
         <%= f.text_field :first_name, class: "form-control", placeholder: "First name" %>
         <i class="fa fa-user-circle form-control-feedback l-h-34"></i>
       </div>
@@ -30,8 +37,13 @@
 
     <div class="form-group">
       <div class="col-xs-12">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
-        <i class="fa fa-key form-control-feedback l-h-34"></i>
+        <%= f.select :program, User::VALID_PROGRAMS, { include_blank: "Select a program" }, { class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-12">
+        <%= f.select :graduation_year, User::VALID_YEARS, { include_blank: "Select graduation year" }, { class: "form-control" } %>
       </div>
     </div>
 
