@@ -22,4 +22,4 @@
 en:
   time:
     formats:
-      date: "%b %d (%A) at %-l:%M %p"
+      date: "%b %d (%A)"
