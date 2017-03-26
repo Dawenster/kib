@@ -20,6 +20,10 @@ class Course < ActiveRecord::Base
                           :foreign_key => :course_id,
                           :association_foreign_key => :teacher_id
 
+  def code_and_name
+    "#{code} - #{name}"
+  end
+
   def student_requests
     requests.where.not(student_id: nil)
   end

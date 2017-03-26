@@ -28,12 +28,15 @@
                           - if @requested_courses_as_student.include?(course)
                             = render "requested"
                           - else
-                            = link_to "Learn", requests_path(student_params), method: :post, class: "btn btn-primary btn-xs waves-effect waves-light m-b-5"
+                            a.request-btn.btn.btn-primary.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(student_params)}" data-request-role="student" data-request-course="#{course.code_and_name}"
+                              | Learn
+
                         td.text-center
                           - if @requested_courses_as_teacher.include?(course)
                             = render "requested"
                           - else
-                            = link_to "Teach", requests_path(teacher_params), method: :post, class: "btn btn-inverse btn-xs waves-effect waves-light m-b-5"
+                            a.request-btn.btn.btn-inverse.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(teacher_params)}" data-request-role="teacher" data-request-course="#{course.code_and_name}"
+                              | Teach
 
   - if @searched_term.present?
     .row
