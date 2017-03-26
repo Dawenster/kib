@@ -1,3 +1,12 @@
 .course-index {
   margin-top: 40px;
+
+  .centered-column {
+    text-align: center;
+  }
+
+  .requested-course {
+    font-size: 16px;
+    cursor: pointer;
+  }
 }

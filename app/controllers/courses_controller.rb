@@ -11,6 +11,10 @@ class CoursesController < ApplicationController
       @course_categories = CourseCategory.order(:name).joins(:courses).group("course_categories.id")
       @course_ids = Course.pluck(:id)
     end
+    if current_user.present?
+      @requested_courses_as_student = current_user.requested_courses_as_student
+      @requested_courses_as_teacher = current_user.requested_courses_as_teacher
+    end
     flash.now[:alert] = "No courses matching your search for '#{@searched_term}'" if @course_ids.empty? && !@searched_term.blank?
   end
 end
