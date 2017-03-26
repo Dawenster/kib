@@ -16,12 +16,14 @@
                       th Code
                       th Name
                       th
+                      th
                   tbody
                     - cc.courses.order(:name).where(id: @course_ids).each do |course|
                       tr
                         td = course.code
                         td = course.name
-                        td = link_to "Select", "", class: "btn btn-primary btn-xs waves-effect waves-light m-b-5"
+                        td = link_to "Learn", "", class: "btn btn-primary btn-xs waves-effect waves-light m-b-5"
+                        td = link_to "Teach", "", class: "btn btn-inverse btn-xs waves-effect waves-light m-b-5"
 
   - if @searched_term.present?
     .row
