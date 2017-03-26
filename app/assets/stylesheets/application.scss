@@ -24,6 +24,7 @@ body, html {
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
 @font-face {
   font-family: 'Material-Design-Iconic-Font';
@@ -44,18 +45,6 @@ body, html {
     asset-url('fontawesome-webfont.woff') format('woff'),
     asset-url('fontawesome-webfont.woff2') format('woff'),
     asset-url('fontawesome-webfont.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'glyphicons-halflings-regular';
-  src: asset-url('glyphicons-halflings-regular.woff');
-  src: asset-url('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-    asset-url('glyphicons-halflings-regular.svg#glyphicons-halflings-regular') format('svg'),
-    asset-url('glyphicons-halflings-regular.woff') format('woff'),
-    asset-url('glyphicons-halflings-regular.woff2') format('woff'),
-    asset-url('glyphicons-halflings-regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
