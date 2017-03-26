@@ -18,7 +18,7 @@
                       th.text-center Learn
                       th.text-center Teach
                   tbody
-                    - cc.courses.order(:name).where(id: @course_ids).each do |course|
+                    - cc.courses.active.order(:name).where(id: @course_ids).each do |course|
                       - student_params = {course_id: course.id, student_id: current_user.try(:id)}
                       - teacher_params = {course_id: course.id, teacher_id: current_user.try(:id)}
                       tr
