@@ -6,6 +6,11 @@ class Request < ActiveRecord::Base
   belongs_to :teacher, class_name: "User", foreign_key: :teacher_id
   belongs_to :course
 
+  def role
+    return "student" if student_id.present?
+    return "teacher" if teacher_id.present?
+  end
+
   private
 
   def exactly_one_request_type

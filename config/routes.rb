@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root "pages#landing"
 
   resources :courses, only: [:index]
+  resources :requests, only: [:create]
 end

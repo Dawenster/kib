@@ -19,11 +19,13 @@
                       th
                   tbody
                     - cc.courses.order(:name).where(id: @course_ids).each do |course|
+                      - student_params = {course_id: course.id, student_id: current_user.try(:id)}
+                      - teacher_params = {course_id: course.id, teacher_id: current_user.try(:id)}
                       tr
                         td = course.code
                         td = course.name
-                        td = link_to "Learn", "", class: "btn btn-primary btn-xs waves-effect waves-light m-b-5"
-                        td = link_to "Teach", "", class: "btn btn-inverse btn-xs waves-effect waves-light m-b-5"
+                        td = link_to "Learn", requests_path(student_params), method: :post, class: "btn btn-primary btn-xs waves-effect waves-light m-b-5"
+                        td = link_to "Teach", requests_path(teacher_params), method: :post, class: "btn btn-inverse btn-xs waves-effect waves-light m-b-5"
 
   - if @searched_term.present?
     .row
