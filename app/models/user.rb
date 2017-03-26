@@ -40,4 +40,8 @@ class User < ActiveRecord::Base
     "#{program}, #{graduation_year}"
   end
 
+  def all_requests
+    student_requests + teacher_requests
+  end
+
 end

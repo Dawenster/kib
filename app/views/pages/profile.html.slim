@@ -1,4 +1,4 @@
-.wrapper-page.profile-page
+.profile-page
   .text-center
     .logo.logo-lg
       h2
@@ -18,21 +18,9 @@
             th Course
             th Status
         tbody
-          tr
-            td
-              | Hi 
-            td
-              | Hi
-            td
-              | Hi
-            td
-              | Hi
-          tr
-            td
-              | aHi 
-            td
-              | Hi
-            td
-              | Hi
-            td
-              | Hi
+          - @requests.each do |request|
+            tr
+              td = "Request to be #{request.role}"
+              td = l(request.created_at, format: :date)
+              td = request.course.name
+              td Pending

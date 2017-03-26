@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
   def profile
     @user = current_user
+    @requests = @user.all_requests
   end
 
 end
