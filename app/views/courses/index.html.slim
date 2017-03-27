@@ -26,7 +26,7 @@
                     tr
                       th Code
                       th Name
-                      th.text-center Learn
+                      th.text-center.disabled-text Learn
                       th.text-center Teach
                   tbody
                     - cc.courses.active.order(:name).where(id: @course_ids).each do |course|
@@ -39,7 +39,7 @@
                           - if @requested_courses_as_student.include?(course)
                             = render "requested"
                           - else
-                            a.request-btn.btn.btn-primary.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(student_params)}" data-request-role="student" data-request-course="#{course.code_and_name}"
+                            a.request-btn.btn.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(student_params)}" data-request-role="student" data-request-course="#{course.code_and_name}" class="#{@above_threshold ? 'disabled btn-default' : 'btn-primary'}"
                               | Learn
 
                         td.text-center

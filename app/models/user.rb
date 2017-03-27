@@ -82,4 +82,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def above_seminar_ratio_threshold
+    seminar_ratio >= SEMINAR_RATIO_LIMIT
+  end
+
 end
