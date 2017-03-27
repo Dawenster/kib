@@ -28,6 +28,18 @@ class User < ActiveRecord::Base
                           :foreign_key => :teacher_id,
                           :association_foreign_key => :course_id
 
+  has_and_belongs_to_many :seminars_as_student,
+                          :class_name => 'Seminar',
+                          :join_table => :requests,
+                          :foreign_key => :student_id,
+                          :association_foreign_key => :seminar_id
+
+  has_and_belongs_to_many :seminars_as_teacher,
+                          :class_name => 'Seminar',
+                          :join_table => :requests,
+                          :foreign_key => :teacher_id,
+                          :association_foreign_key => :seminar_id
+
   def is_admin?
     !!admin
   end
