@@ -26,7 +26,7 @@
                     tr
                       th Code
                       th Name
-                      th.text-center.disabled-text Learn
+                      th.text-center class="#{'disabled-text' if @above_threshold}" Learn
                       th.text-center Teach
                   tbody
                     - cc.courses.active.order(:name).where(id: @course_ids).each do |course|
