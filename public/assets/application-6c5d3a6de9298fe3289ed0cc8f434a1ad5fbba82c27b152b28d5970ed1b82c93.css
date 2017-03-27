@@ -6,6 +6,10 @@
 .course-index .requested-course {
   font-size: 16px;
 }
+/* line 8, /Users/davidwen/Coding/kib/app/assets/stylesheets/courses/index.scss */
+.course-index .disabled-text {
+  color: lightgrey;
+}
 /* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/layouts/nav.scss */
 .navbar-hide-on-xs {
   opacity: 0;
@@ -22,6 +26,11 @@
 /* line 5, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/profile.scss */
 .profile-page h2 small {
   margin-left: 10px;
+}
+/* line 10, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/profile.scss */
+.profile-page .student-to-teaching-ratio-q {
+  margin-left: 5px;
+  cursor: pointer;
 }
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
