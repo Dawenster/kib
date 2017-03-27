@@ -36,18 +36,24 @@
                         td = course.code
                         td = course.name
                         td.text-center
-                          - if user_signed_in? && @requested_courses_as_student.include?(course)
-                            = render "requested"
+                          - if user_signed_in?
+                            - if @requested_courses_as_student.include?(course)
+                              = render "requested"
+                            - else
+                              a.request-btn.btn.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(student_params)}" data-request-role="student" data-request-course="#{course.code_and_name}" class="#{@above_threshold ? 'disabled btn-default' : 'btn-primary'}"
+                                | Learn
                           - else
-                            a.request-btn.btn.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(student_params)}" data-request-role="student" data-request-course="#{course.code_and_name}" class="#{@above_threshold ? 'disabled btn-default' : 'btn-primary'}"
-                              | Learn
+                            = link_to "Learn", requests_path(student_params), method: :post, class: "btn-primary btn btn-xs waves-effect waves-light m-b-5"
 
                         td.text-center
-                          - if user_signed_in? && @requested_courses_as_teacher.include?(course)
-                            = render "requested"
+                          - if user_signed_in?
+                            - if @requested_courses_as_teacher.include?(course)
+                              = render "requested"
+                            - else
+                              a.request-btn.btn.btn-inverse.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(teacher_params)}" data-request-role="teacher" data-request-course="#{course.code_and_name}"
+                                | Teach
                           - else
-                            a.request-btn.btn.btn-inverse.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(teacher_params)}" data-request-role="teacher" data-request-course="#{course.code_and_name}"
-                              | Teach
+                            = link_to "Teach", requests_path(teacher_params), method: :post, class: "btn-inverse btn btn-xs waves-effect waves-light m-b-5"
 
   - if @searched_term.present?
     .row
