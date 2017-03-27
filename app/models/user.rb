@@ -9,6 +9,12 @@ class User < ActiveRecord::Base
   VALID_YEAR_END = VALID_YEAR_START + 9
   VALID_YEARS = (VALID_YEAR_START..VALID_YEAR_END).to_a.map(&:to_s)
 
+  SEMINAR_RATIO_LIMIT = 2
+  SEMINAR_RATIO_EXPLANATION = "You must teach 1 class for every #{SEMINAR_RATIO_LIMIT} classes you take. " \
+                              "Users with ratios greater than #{SEMINAR_RATIO_LIMIT} can only request to be teachers (until their ratio falls). " \
+                              "You can take your first class without being a teacher, " \
+                              "but after that you will need to teach in order to keep taking classes."
+
   validates :first_name, :last_name, :program, :graduation_year, presence: true
   validates_inclusion_of :program, :in => VALID_PROGRAMS, message: "must be selected"
   validates_inclusion_of :graduation_year, :in => VALID_YEARS, message: "must be between #{VALID_YEAR_START} and #{VALID_YEAR_END}"
@@ -54,6 +60,26 @@ class User < ActiveRecord::Base
 
   def all_requests
     student_requests + teacher_requests
+  end
+
+  def seminar_ratio
+    num_times_taught = teacher_requests.count.to_f
+    num_times_as_student = student_requests.count
+    if num_times_as_student == 0
+      0
+    elsif num_times_taught == 0
+      1 / 0.0
+    else
+      ('%.2f' % (num_times_as_student / num_times_taught)).to_f
+    end
+  end
+
+  def seminar_ratio_for_display
+    if seminar_ratio == Float::INFINITY
+      "Infinite (please teach a course)"
+    else
+      seminar_ratio
+    end
   end
 
 end

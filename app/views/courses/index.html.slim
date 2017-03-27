@@ -1,6 +1,17 @@
 .course-index
   .row
     .col-md-8.col-md-offset-2
+      h4
+        = "<b>Rules for course selection:</b> #{User::SEMINAR_RATIO_EXPLANATION}".html_safe
+
+      - if user_signed_in?
+        h4
+          = "<b>Your current ratio is:</b> #{current_user.seminar_ratio_for_display}".html_safe
+
+  br
+
+  .row
+    .col-md-8.col-md-offset-2
       #course-category-accordian.panel-group
         - @course_categories.each_with_index do |cc, i|
           .panel.panel-default

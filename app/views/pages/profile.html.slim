@@ -6,6 +6,10 @@
         small
           = @user.program_and_year
 
+      h4
+        = "Student-to-teaching ratio: #{@user.seminar_ratio_for_display}"
+        i.fa.fa-question-circle.student-to-teaching-ratio-q data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::SEMINAR_RATIO_EXPLANATION}"
+
   br
 
   .row
