@@ -32,12 +32,16 @@
                     - cc.courses.active.order(:name).where(id: @course_ids).each do |course|
                       - student_params = {course_id: course.id, student_id: current_user.try(:id)}
                       - teacher_params = {course_id: course.id, teacher_id: current_user.try(:id)}
+                      - already_requested_to_learn = @requested_courses_as_student.include?(course)
+                      - already_requested_to_teach = @requested_courses_as_teacher.include?(course)
                       tr
                         td = course.code
                         td = course.name
                         td.text-center
                           - if user_signed_in?
-                            - if @requested_courses_as_student.include?(course)
+                            - if already_requested_to_teach
+                              | -
+                            - elsif already_requested_to_learn
                               = render "requested"
                             - else
                               a.request-btn.btn.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(student_params)}" data-request-role="student" data-request-course="#{course.code_and_name}" class="#{@above_threshold ? 'disabled btn-default' : 'btn-primary'}"
@@ -47,7 +51,9 @@
 
                         td.text-center
                           - if user_signed_in?
-                            - if @requested_courses_as_teacher.include?(course)
+                            - if already_requested_to_learn
+                              | -
+                            - elsif already_requested_to_teach
                               = render "requested"
                             - else
                               a.request-btn.btn.btn-inverse.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(teacher_params)}" data-request-role="teacher" data-request-course="#{course.code_and_name}"
