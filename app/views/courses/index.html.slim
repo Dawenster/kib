@@ -18,7 +18,7 @@
             .panel-heading
               h4.panel-title
                 a data-toggle="collapse" data-parent="#course-category-accordian" href="##{cc.code}" aria-expanded="#{i == 0 ? 'true' : 'false'}" class="#{i == 0 ? 'expanded' : 'collapsed'}"
-                  = cc.name
+                  = "#{cc.name} (#{cc.code})"
             .panel-collapse.collapse id="#{cc.code}" class="#{'in' if i == 0}" aria-expanded="#{i == 0 ? 'true' : 'false'}"
               .panel-body
                 table.table.table-hover
