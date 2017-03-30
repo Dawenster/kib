@@ -2,11 +2,11 @@
   .row
     .col-md-8.col-md-offset-2
       h4
-        = "<b>Rules for course selection:</b> #{User::SEMINAR_RATIO_EXPLANATION}".html_safe
+        = "<b>Rules for course selection:</b> #{User::REQUEST_RATIO_EXPLANATION}".html_safe
 
       - if user_signed_in?
         h4
-          = "<b>Your current ratio is:</b> #{current_user.seminar_ratio_for_display}".html_safe
+          = "<b>Your current ratio is:</b> #{current_user.request_ratio_for_display}".html_safe
 
   br
 

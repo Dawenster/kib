@@ -8,5 +8,4 @@ $(document).ready(function(){
     ordering: true,
     order: [[ 1, 'asc' ]]
   });
-  $(".student-to-teaching-ratio-q").popover()
 })

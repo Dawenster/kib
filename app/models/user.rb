@@ -9,11 +9,14 @@ class User < ActiveRecord::Base
   VALID_YEAR_END = VALID_YEAR_START + 9
   VALID_YEARS = (VALID_YEAR_START..VALID_YEAR_END).to_a.map(&:to_s)
 
-  SEMINAR_RATIO_LIMIT = 2
-  SEMINAR_RATIO_EXPLANATION = "You must teach 1 class for every #{SEMINAR_RATIO_LIMIT} classes you take. " \
-                              "Users with ratios greater than #{SEMINAR_RATIO_LIMIT} can only request to be teachers (until their ratio falls). " \
-                              "You can take your first class without being a teacher, " \
-                              "but after that you will need to teach in order to keep taking classes."
+  REQUEST_RATIO_LIMIT = 2
+  REQUEST_RATIO_EXPLANATION = "You must request to teach 1 class for every #{REQUEST_RATIO_LIMIT} #{'request'.pluralize(REQUEST_RATIO_LIMIT)} to learn."
+
+  ASSIGNMENT_RATIO_LIMIT = 2
+  ASSIGNMENT_RATIO_EXPLANATION = "You can only be assigned #{ASSIGNMENT_RATIO_LIMIT} #{'class'.pluralize(ASSIGNMENT_RATIO_LIMIT)} for every 1 class you teach. " \
+                                 "Users with ratios greater than #{ASSIGNMENT_RATIO_LIMIT} can only assigned as teachers (until their ratio falls). " \
+                                 "You can be assigned your first class without being a teacher, " \
+                                 "but after that you will need to teach in order to keep taking classes."
 
   validates :first_name, :last_name, :program, :graduation_year, presence: true
   validates_inclusion_of :program, :in => VALID_PROGRAMS, message: "must be selected"
@@ -62,28 +65,41 @@ class User < ActiveRecord::Base
     student_requests + teacher_requests
   end
 
-  def seminar_ratio
-    num_times_taught = teacher_requests.count.to_f
-    num_times_as_student = student_requests.count
-    if num_times_as_student == 0
-      0
-    elsif num_times_taught == 0
-      1 / 0.0
+  def request_ratio
+    num_teacher_requests = teacher_requests.count.to_f
+    num_student_requests = student_requests.count
+    if num_teacher_requests == 0
+      num_student_requests
     else
-      ('%.2f' % (num_times_as_student / num_times_taught)).to_f
+      num_student_requests / num_teacher_requests
     end
   end
 
-  def seminar_ratio_for_display
-    if seminar_ratio == Float::INFINITY
-      "Infinite (please teach a course)"
+  def request_ratio_for_display
+    ('%.2f' % request_ratio).to_f
+  end
+
+  def above_request_ratio_threshold
+    request_ratio >= REQUEST_RATIO_LIMIT
+  end
+
+  def assignment_ratio
+    num_times_assigned_as_teacher = teacher_requests.assigned.count.to_f
+    num_times_assigned_as_student = student_requests.assigned.count
+    return 0 if num_times_assigned_as_student == 0
+    num_times_assigned_as_student / num_times_assigned_as_teacher
+  end
+
+  def assignment_ratio_for_display
+    if assignment_ratio == Float::INFINITY
+      "Infinite"
     else
-      seminar_ratio
+      ('%.2f' % assignment_ratio).to_f
     end
   end
 
-  def above_seminar_ratio_threshold
-    seminar_ratio >= SEMINAR_RATIO_LIMIT
+  def above_assignment_ratio_threshold
+    assignment_ratio >= ASSIGNMENT_RATIO_LIMIT
   end
 
 end

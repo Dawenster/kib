@@ -7,8 +7,11 @@
           = @user.program_and_year
 
       h4
-        = "Student-to-teaching ratio: #{@user.seminar_ratio_for_display}"
-        i.fa.fa-question-circle.student-to-teaching-ratio-q data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::SEMINAR_RATIO_EXPLANATION}"
+        = "Request ratio: #{@user.request_ratio_for_display}"
+        i.fa.fa-question-circle.popover-item.ratio-question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::REQUEST_RATIO_EXPLANATION}"
+      h4
+        = "Assignment ratio: #{@user.assignment_ratio_for_display}"
+        i.fa.fa-question-circle.popover-item.ratio-question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::ASSIGNMENT_RATIO_EXPLANATION}"
 
   br
 
