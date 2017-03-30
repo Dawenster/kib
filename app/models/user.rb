@@ -18,9 +18,12 @@ class User < ActiveRecord::Base
                                  "You can be assigned your first class without being a teacher, " \
                                  "but after that you will need to teach in order to keep taking classes."
 
+  KELLOGG_DOMAIN = "kellogg.northwestern.edu"
+
   validates :first_name, :last_name, :program, :graduation_year, presence: true
   validates_inclusion_of :program, :in => VALID_PROGRAMS, message: "must be selected"
   validates_inclusion_of :graduation_year, :in => VALID_YEARS, message: "must be between #{VALID_YEAR_START} and #{VALID_YEAR_END}"
+  validate :kellogg_email, if: :not_admin?
 
   has_many :student_requests, class_name: 'Request', foreign_key: :student_id
   has_many :teacher_requests, class_name: 'Request', foreign_key: :teacher_id
@@ -51,6 +54,10 @@ class User < ActiveRecord::Base
 
   def is_admin?
     !!admin
+  end
+
+  def not_admin?
+    !is_admin?
   end
 
   def full_name
@@ -100,6 +107,13 @@ class User < ActiveRecord::Base
 
   def above_assignment_ratio_threshold
     assignment_ratio >= ASSIGNMENT_RATIO_LIMIT
+  end
+
+  private
+
+  def kellogg_email
+    email_domain = email.split("@").last
+    errors.add(:email, "must end in @#{KELLOGG_DOMAIN}") if email_domain.downcase.strip != KELLOGG_DOMAIN
   end
 
 end
