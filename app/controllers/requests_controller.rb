@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
         end
       end
     else
-      errors = request.errors.full_messages.to_sentence.downcase.capitalize
+      errors = error_display_as_sentence(request.errors)
       respond_to do |format|
         format.json do
           render json: { errors: errors }
@@ -29,6 +29,15 @@ class RequestsController < ApplicationController
           redirect_to courses_path, alert: errors
         end
       end
+    end
+  end
+
+  def destroy
+    request = Request.find(params[:id])
+    if request.destroy
+      redirect_to profile_path, notice: "Successfully cancelled #{request.role} request for: #{request.course.code_and_name}"
+    else
+      redirect_to profile_path, alert: error_display_as_sentence(request.errors)
     end
   end
 

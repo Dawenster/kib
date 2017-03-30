@@ -24,6 +24,7 @@
             th Date
             th Course
             th Status
+            th Action
         tbody
           - @requests.each do |request|
             tr
@@ -31,3 +32,14 @@
               td = l(request.created_at, format: :date)
               td = request.course.name
               td Pending
+              td = link_to "Cancel", request_path(request), method: :delete, class: "btn btn-pink waves-effect waves-light m-b-5 btn-xs"
+
+  br
+
+  .row
+    .col-md-2.col-md-offset-5
+      = link_to "Make more requests", courses_path, class: "btn btn-primary waves-effect w-md waves-light m-b-5 center-block"
+      
+  br
+  br
+  br
