@@ -32,8 +32,8 @@
                     - cc.courses.active.order(:name).where(id: @course_ids).each do |course|
                       - student_params = {course_id: course.id, student_id: current_user.try(:id)}
                       - teacher_params = {course_id: course.id, teacher_id: current_user.try(:id)}
-                      - already_requested_to_learn = @requested_courses_as_student.include?(course)
-                      - already_requested_to_teach = @requested_courses_as_teacher.include?(course)
+                      - already_requested_to_learn = user_signed_in? && @requested_courses_as_student.include?(course)
+                      - already_requested_to_teach = user_signed_in? && @requested_courses_as_teacher.include?(course)
                       tr
                         td = course.code
                         td = course.name
