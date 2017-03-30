@@ -16,4 +16,6 @@ class Seminar < ActiveRecord::Base
                           :foreign_key => :seminar_id,
                           :association_foreign_key => :teacher_id
 
+  DEFAULT_DURATION_IN_MIN = 60
+
 end
