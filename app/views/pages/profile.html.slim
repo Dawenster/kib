@@ -8,10 +8,15 @@
 
       h4
         = "Request ratio: #{@user.request_ratio_for_display}"
-        i.fa.fa-question-circle.popover-item.ratio-question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::REQUEST_RATIO_EXPLANATION}"
+        i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::REQUEST_RATIO_EXPLANATION}"
       h4
         = "Assignment ratio: #{@user.assignment_ratio_for_display}"
-        i.fa.fa-question-circle.popover-item.ratio-question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::ASSIGNMENT_RATIO_EXPLANATION}"
+        i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::ASSIGNMENT_RATIO_EXPLANATION}"
+
+      h4
+        | Assignable?
+        input.assignable-switch type="checkbox" checked=""
+        i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="If you do not want to be assigned right now (e.g. it's recruiting week for you) then toggle this off"
 
   br
 
