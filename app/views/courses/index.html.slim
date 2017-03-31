@@ -38,27 +38,19 @@
                         td = course.code
                         td = course.name
                         td.text-center
-                          - if user_signed_in?
-                            - if already_requested_to_teach
-                              | -
-                            - elsif already_requested_to_learn
-                              = render "requested"
-                            - else
-                              .learn-button-wrapper data-toggle="tooltip" data-placement="right" title="" data-original-title="To unlock, pick more classes to teach" class="#{'has-tooltip' if @above_threshold}"
-                                a.request-btn.btn.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(student_params)}" data-request-role="student" data-request-course="#{course.code_and_name}" class="#{@above_threshold ? 'disabled btn-default' : 'btn-primary'}"
-                                  | Learn
+                          - if already_requested_to_teach
+                            | -
+                          - elsif already_requested_to_learn
+                            = render "requested"
                           - else
-                            = link_to "Learn", requests_path(student_params), method: :post, class: "btn-primary btn btn-xs waves-effect waves-light m-b-5"
+                            .learn-button-wrapper data-toggle="tooltip" data-placement="right" title="" data-original-title="To unlock, pick more classes to teach" class="#{'has-tooltip' if @above_threshold}"
+                              = link_to "Learn", requests_path(student_params), method: :post, class: "btn btn-xs waves-effect waves-light m-b-5 #{@above_threshold ? 'disabled btn-default' : 'btn-primary'}"
 
                         td.text-center
-                          - if user_signed_in?
-                            - if already_requested_to_learn
-                              | -
-                            - elsif already_requested_to_teach
-                              = render "requested"
-                            - else
-                              a.request-btn.btn.btn-inverse.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(teacher_params)}" data-request-role="teacher" data-request-course="#{course.code_and_name}"
-                                | Teach
+                          - if already_requested_to_learn
+                            | -
+                          - elsif already_requested_to_teach
+                            = render "requested"
                           - else
                             = link_to "Teach", requests_path(teacher_params), method: :post, class: "btn-inverse btn btn-xs waves-effect waves-light m-b-5"
 
