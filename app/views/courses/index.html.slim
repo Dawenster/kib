@@ -44,8 +44,9 @@
                             - elsif already_requested_to_learn
                               = render "requested"
                             - else
-                              a.request-btn.btn.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(student_params)}" data-request-role="student" data-request-course="#{course.code_and_name}" class="#{@above_threshold ? 'disabled btn-default' : 'btn-primary'}"
-                                | Learn
+                              .learn-button-wrapper data-toggle="tooltip" data-placement="right" title="" data-original-title="To unlock, pick more classes to teach" class="#{'has-tooltip' if @above_threshold}"
+                                a.request-btn.btn.btn-xs.waves-effect.waves-light.m-b-5 data-url="#{requests_path(student_params)}" data-request-role="student" data-request-course="#{course.code_and_name}" class="#{@above_threshold ? 'disabled btn-default' : 'btn-primary'}"
+                                  | Learn
                           - else
                             = link_to "Learn", requests_path(student_params), method: :post, class: "btn-primary btn btn-xs waves-effect waves-light m-b-5"
 

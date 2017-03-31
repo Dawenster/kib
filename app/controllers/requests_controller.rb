@@ -22,6 +22,7 @@ class RequestsController < ApplicationController
       errors = error_display_as_sentence(request.errors)
       respond_to do |format|
         format.json do
+          flash[:alert] = errors
           render json: { errors: errors }
         end
 

@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  $(".has-tooltip").tooltip();
   $(".dataTable").DataTable({
     searching: false,
     lengthChange: false,
