@@ -13,6 +13,7 @@ gem 'rails_admin', '~> 1.1.1'
 gem 'rollbar'
 gem 'sass-rails', '~> 5.0'
 gem 'slim'
+gem 'switchery-rails'
 gem 'uglifier', '>= 1.3.0'
 
 group :doc do
