@@ -6,20 +6,32 @@
         small
           = @user.program_and_year
 
-      h4
-        = "Request ratio: #{@user.request_ratio_for_display}"
-        i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::REQUEST_RATIO_EXPLANATION}"
-      h4
-        = "Assignment ratio: #{@user.assignment_ratio_for_display}"
-        i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::ASSIGNMENT_RATIO_EXPLANATION}"
 
-      h4
-        | Assignable?
-        - if current_user.assignable
-          input.assignable-switch type="checkbox" checked="checked" data-url="#{user_path(current_user)}"
-        - else
-          input.assignable-switch type="checkbox" data-url="#{user_path(current_user)}"
-        i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="If you do not want to be assigned right now (e.g. it's recruiting week for you) then toggle this off"
+  .row
+    .col-md-4
+      .text-center
+        .logo
+          h4
+            = "Request ratio: #{@user.request_ratio_for_display}"
+            i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::REQUEST_RATIO_EXPLANATION}"
+
+    .col-md-4
+      .text-center
+        .logo
+          h4
+            = "Assignment ratio: #{@user.assignment_ratio_for_display}"
+            i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::ASSIGNMENT_RATIO_EXPLANATION}"
+
+    .col-md-4
+      .text-center
+        .logo
+          h4
+            | Assignable?
+            - if current_user.assignable
+              input.assignable-switch type="checkbox" checked="checked" data-url="#{user_path(current_user)}"
+            - else
+              input.assignable-switch type="checkbox" data-url="#{user_path(current_user)}"
+            i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="If you do not want to be assigned right now (e.g. it's recruiting week for you) then toggle this off"
 
   br
 
