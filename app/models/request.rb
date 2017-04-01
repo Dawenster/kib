@@ -1,7 +1,7 @@
 class Request < ActiveRecord::Base
 
   validate :exactly_one_request_type
-  validate :user_within_ratio_limits, on: :create
+  validate :user_within_ratio_limits, on: :create, if: :check_ratios
 
   scope :assigned, -> { where(assigned: true) }
   scope :unassigned, -> { where.not(assigned: true) }
@@ -25,6 +25,10 @@ class Request < ActiveRecord::Base
   end
 
   private
+
+  def check_ratios
+    !Rails.env.test?
+  end
 
   def exactly_one_request_type
     if student_id.nil? && teacher_id.nil?
