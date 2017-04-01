@@ -12,7 +12,9 @@ class Course < ActiveRecord::Base
   has_many :unassigned_requests, -> { unassigned }, class_name: 'Request', foreign_key: :course_id, dependent: :delete_all
 
   has_many :assigned_requesting_students, class_name: 'User', through: :assigned_requests, source: :student
+  has_many :assigned_requesting_teachers, class_name: 'User', through: :assigned_requests, source: :teacher
   has_many :unassigned_requesting_students, class_name: 'User', through: :unassigned_requests, source: :student
+  has_many :unassigned_requesting_teachers, class_name: 'User', through: :unassigned_requests, source: :teacher
 
   def code_and_name
     "#{code} - #{name}"

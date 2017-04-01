@@ -13,4 +13,11 @@ describe AssignmentEngine::Seminar do
 
   end
 
+  context "#create" do
+
+    it "" do
+    end
+
+  end
+
 end

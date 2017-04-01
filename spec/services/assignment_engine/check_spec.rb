@@ -19,16 +19,6 @@ describe AssignmentEngine::Check do
       expect(@ae_check.course).to eq(course)
     end
 
-    it "has correct teacher_requests" do
-      @ae_check = AssignmentEngine::Check.new(course.id)
-      expect(@ae_check.teacher_requests).to eq(Request.where(id: @teacher_request.id))
-    end
-
-    it "has correct student_requests" do
-      @ae_check = AssignmentEngine::Check.new(course.id)
-      expect(@ae_check.student_requests).to eq(Request.where(id: @student_request.id))
-    end
-
     context "assignable" do
 
       before do

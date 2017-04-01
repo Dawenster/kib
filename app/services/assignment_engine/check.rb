@@ -1,8 +1,6 @@
 class AssignmentEngine::Check
 
   attr_reader :course
-  attr_reader :teacher_requests
-  attr_reader :student_requests
   attr_reader :num_teachers_that_can_take_course
   attr_reader :num_students_that_can_take_course
   attr_reader :pass
@@ -12,10 +10,8 @@ class AssignmentEngine::Check
 
   def initialize(course_id)
     @course = Course.find(course_id)
-    @teacher_requests = @course.requests.unassigned.teacher
-    @student_requests = @course.requests.unassigned.student
-    @num_teachers_that_can_take_course = @teacher_requests.joins(:teacher).where("users.assignable is true").count
-    @num_students_that_can_take_course = @student_requests.joins(:student).where("users.assignable is true").count
+    @num_teachers_that_can_take_course = @course.unassigned_requesting_teachers.assignable.count
+    @num_students_that_can_take_course = @course.unassigned_requesting_students.assignable.count
     @pass = false
   end
 
