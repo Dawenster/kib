@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def should_not_validate_kellogg?
-    is_admin? || Rails.env.development?
+    is_admin? || !Rails.env.production?
   end
 
   def full_name
