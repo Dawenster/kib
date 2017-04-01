@@ -1,3 +1,68 @@
+/*
+ *
+ * Main stylesheet for Switchery.
+ * http://abpetkov.github.io/switchery/
+ *
+ */
+
+/* Switchery defaults. */
+
+
+.switchery {
+  background-color: #fff;
+  border: 1px solid #dfdfdf;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-block;
+  height: 30px;
+  position: relative;
+  vertical-align: middle;
+  width: 50px;
+
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: content-box;
+  background-clip: content-box;
+}
+
+.switchery > small {
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  height: 30px;
+  position: absolute;
+  top: 0;
+  width: 30px;
+}
+
+/* Switchery sizes. */
+
+.switchery-small {
+  border-radius: 20px;
+  height: 20px;
+  width: 33px;
+}
+
+.switchery-small > small {
+  height: 20px;
+  width: 20px;
+}
+
+.switchery-large {
+  border-radius: 40px;
+  height: 40px;
+  width: 66px;
+}
+
+.switchery-large > small {
+  height: 40px;
+  width: 40px;
+}
+
+
 /* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/courses/index.scss */
 .course-index {
   margin-top: 40px;
@@ -14,6 +79,11 @@
 .navbar-hide-on-xs {
   opacity: 0;
 }
+
+/* line 5, /Users/davidwen/Coding/kib/app/assets/stylesheets/layouts/nav.scss */
+.logo-image {
+  margin: -5px 5px 0px 0px;
+}
 /* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/layouts/notices_and_alerts.scss */
 .notices-and-alerts {
   margin: 60px 0px -20px 0px;
@@ -28,9 +98,13 @@
   margin-left: 10px;
 }
 /* line 10, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/profile.scss */
-.profile-page .ratio-question-icon {
+.profile-page .question-icon {
   margin-left: 5px;
   cursor: pointer;
+}
+/* line 15, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/profile.scss */
+.profile-page .switchery-default {
+  margin-left: 5px;
 }
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -22559,7 +22633,7 @@ h1,h2,h3,h4,h5,h6 {
   top: 0;
 }
 .bg-img-1 {
-  background: url("https://s3.amazonaws.com/kellogg-in-a-bottle/landing/bg2.jpg");
+  background: url("https://s3.amazonaws.com/kellogg-in-a-bottle/landing/background.jpg");
 }
 .bg-img-2 {
   background: url("https://s3.amazonaws.com/kellogg-in-a-bottle/landing/bg1.jpg");
@@ -32244,13 +32318,14 @@ h6 {
  *
 
 
+
  */
-/* line 18, /Users/davidwen/Coding/kib/app/assets/stylesheets/application.scss */
+/* line 19, /Users/davidwen/Coding/kib/app/assets/stylesheets/application.scss */
 body, html {
   font-family: 'Roboto' !important;
   background: #f5f5f5;
 }
-/* line 21, /Users/davidwen/Coding/kib/app/assets/stylesheets/application.scss */
+/* line 22, /Users/davidwen/Coding/kib/app/assets/stylesheets/application.scss */
 body h1, body h2, body h3, body h4, body h5, body h6, body p, body a, html h1, html h2, html h3, html h4, html h5, html h6, html p, html a {
   font-family: 'Roboto' !important;
 }
