@@ -29,4 +29,16 @@ class Course < ActiveRecord::Base
     requests.where.not(teacher_id: nil)
   end
 
+  def students_who_can_be_assigned
+    unassigned_requesting_students.assignable.select do |student|
+      !student.above_assignment_ratio_threshold?
+    end
+  end
+
+  def teachers_who_can_be_assigned
+    unassigned_requesting_teachers.assignable.select do |teacher|
+      !teacher.above_assignment_ratio_threshold?
+    end
+  end
+
 end
