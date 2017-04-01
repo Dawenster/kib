@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :program, :graduation_year, presence: true
   validates_inclusion_of :program, :in => VALID_PROGRAMS, message: "must be selected"
   validates_inclusion_of :graduation_year, :in => VALID_YEARS, message: "must be between #{VALID_YEAR_START} and #{VALID_YEAR_END}"
-  validate :kellogg_email, if: :not_admin?
+  validate :kellogg_email, unless: :should_not_validate_kellogg?
 
   has_many :student_requests, class_name: 'Request', foreign_key: :student_id
   has_many :teacher_requests, class_name: 'Request', foreign_key: :teacher_id
@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
 
   def not_admin?
     !is_admin?
+  end
+
+  def should_not_validate_kellogg?
+    is_admin? || Rails.env.development?
   end
 
   def full_name
