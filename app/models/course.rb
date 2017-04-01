@@ -8,17 +8,11 @@ class Course < ActiveRecord::Base
 
   has_many :requests
 
-  has_and_belongs_to_many :requesting_students,
-                          :class_name => 'User',
-                          :join_table => :requests,
-                          :foreign_key => :course_id,
-                          :association_foreign_key => :student_id
+  has_many :assigned_requests, -> { assigned }, class_name: 'Request', foreign_key: :course_id, dependent: :delete_all
+  has_many :unassigned_requests, -> { unassigned }, class_name: 'Request', foreign_key: :course_id, dependent: :delete_all
 
-  has_and_belongs_to_many :requesting_teachers,
-                          :class_name => 'User',
-                          :join_table => :requests,
-                          :foreign_key => :course_id,
-                          :association_foreign_key => :teacher_id
+  has_many :assigned_requesting_students, class_name: 'User', through: :assigned_requests, source: :student
+  has_many :unassigned_requesting_students, class_name: 'User', through: :unassigned_requests, source: :student
 
   def code_and_name
     "#{code} - #{name}"

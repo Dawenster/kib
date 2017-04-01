@@ -30,29 +30,18 @@ class User < ActiveRecord::Base
   has_many :student_requests, class_name: 'Request', foreign_key: :student_id
   has_many :teacher_requests, class_name: 'Request', foreign_key: :teacher_id
 
-  has_and_belongs_to_many :requested_courses_as_student,
-                          :class_name => 'Course',
-                          :join_table => :requests,
-                          :foreign_key => :student_id,
-                          :association_foreign_key => :course_id
+  has_many :assigned_student_requests, -> { assigned }, class_name: 'Request', foreign_key: :student_id, dependent: :delete_all
+  has_many :assigned_teacher_requests, -> { assigned }, class_name: 'Request', foreign_key: :teacher_id, dependent: :delete_all
+  has_many :unassigned_student_requests, -> { unassigned }, class_name: 'Request', foreign_key: :student_id, dependent: :delete_all
+  has_many :unassigned_teacher_requests, -> { unassigned }, class_name: 'Request', foreign_key: :teacher_id, dependent: :delete_all
 
-  has_and_belongs_to_many :requested_courses_as_teacher,
-                          :class_name => 'Course',
-                          :join_table => :requests,
-                          :foreign_key => :teacher_id,
-                          :association_foreign_key => :course_id
+  has_many :assigned_courses_as_student, class_name: 'Course', through: :assigned_student_requests, source: :course
+  has_many :assigned_courses_as_teacher, class_name: 'Course', through: :assigned_teacher_requests, source: :course
+  has_many :unassigned_courses_as_student, class_name: 'Course', through: :unassigned_student_requests, source: :course
+  has_many :unassigned_courses_as_teacher, class_name: 'Course', through: :unassigned_teacher_requests, source: :course
 
-  has_and_belongs_to_many :seminars_as_student,
-                          :class_name => 'Seminar',
-                          :join_table => :requests,
-                          :foreign_key => :student_id,
-                          :association_foreign_key => :seminar_id
-
-  has_and_belongs_to_many :seminars_as_teacher,
-                          :class_name => 'Seminar',
-                          :join_table => :requests,
-                          :foreign_key => :teacher_id,
-                          :association_foreign_key => :seminar_id
+  has_many :assigned_seminars_as_student, class_name: 'Seminar', through: :assigned_student_requests, source: :seminar
+  has_many :assigned_seminars_as_teacher, class_name: 'Seminar', through: :assigned_teacher_requests, source: :seminar
 
   def is_admin?
     !!admin
