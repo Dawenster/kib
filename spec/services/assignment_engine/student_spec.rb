@@ -27,6 +27,7 @@ describe AssignmentEngine::Student do
 
       # Need to be above assignment ratio
       create(:request, :assigned, seminar: seminar7, course: course2, teacher: student1)
+      create(:request, :assigned, seminar: seminar7, course: course2, teacher: student1)
       create(:request, :assigned, seminar: seminar7, course: course2, teacher: student2)
       create(:request, :assigned, seminar: seminar7, course: course2, teacher: student2)
       create(:request, :assigned, seminar: seminar7, course: course2, teacher: student3)

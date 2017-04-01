@@ -3,6 +3,7 @@ require 'rails_helper'
 describe AssignmentEngine::Check do
 
   let(:course) { create(:course) }
+  let(:seminar) { create(:seminar, :complete) }
 
   context "#initialize" do
 
@@ -46,6 +47,32 @@ describe AssignmentEngine::Check do
       it "has correct num_teachers_that_can_take_course" do
         @ae_check = AssignmentEngine::Check.new(course)
         expect(@ae_check.num_teachers_that_can_take_course).to eq(0)
+      end
+
+      it "has correct num_students_that_can_take_course" do
+        @ae_check = AssignmentEngine::Check.new(course)
+        expect(@ae_check.num_students_that_can_take_course).to eq(0)
+      end
+
+    end
+
+    context "within assignment ratio" do
+
+      before do
+        create(:request, :assigned, seminar: seminar, course: course, teacher: student)
+      end
+
+      it "has correct num_students_that_can_take_course" do
+        @ae_check = AssignmentEngine::Check.new(course)
+        expect(@ae_check.num_students_that_can_take_course).to eq(1)
+      end
+
+    end
+
+    context "outside assignment ratio" do
+
+      before do
+        create(:request, :assigned, seminar: seminar, course: course, student: student)
       end
 
       it "has correct num_students_that_can_take_course" do

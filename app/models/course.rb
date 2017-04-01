@@ -31,7 +31,7 @@ class Course < ActiveRecord::Base
 
   def students_who_can_be_assigned
     unassigned_requesting_students.assignable.select do |student|
-      !student.above_assignment_ratio_threshold?
+      !student.above_assignment_ratio_threshold?(1, 0) # Putting 1 here because we're "adding" an assigned request
     end
   end
 
