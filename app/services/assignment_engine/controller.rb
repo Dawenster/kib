@@ -8,11 +8,8 @@ class AssignmentEngine::Controller
   end
 
   def self.assign_requests_for_course(course_id)
-    course = Course.find(course_id)
-    seminar_creation_check = AssignmentEngine::Check.new(course).seminar_creation
-    if seminar_creation_check.pass
-    else
-    end
+    seminar_creation_check = AssignmentEngine::Check.new(course_id).seminar_creation
+    AssignmentEngine::Seminar.new(course_id).create if seminar_creation_check.pass
   end
 
 end

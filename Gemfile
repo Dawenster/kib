@@ -31,11 +31,11 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
   gem 'rspec-rails', '~> 3.5.0'
-  gem 'web-console', '~> 2.0'
 end
 
 group :development do
   gem 'spring'
+  gem 'web-console', '~> 2.0'
 end
 
 group :production do

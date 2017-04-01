@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   validates_inclusion_of :graduation_year, :in => VALID_YEARS, message: "must be between #{VALID_YEAR_START} and #{VALID_YEAR_END}"
   validate :kellogg_email, unless: :should_not_validate_kellogg?
 
+  scope :assignable, -> { where(assignable: true) }
+  scope :not_assignable, -> { where.not(assignable: true) }
+
   has_many :student_requests, class_name: 'Request', foreign_key: :student_id
   has_many :teacher_requests, class_name: 'Request', foreign_key: :teacher_id
 

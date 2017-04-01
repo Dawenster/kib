@@ -25,6 +25,6 @@ module Kib
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.paths << Rails.root.join('public', 'assets')
 
-    config.serve_static_assets = true
+    config.serve_static_files = true
   end
 end
