@@ -28,6 +28,7 @@ end
 group :development, :test do
   gem 'better_errors'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'pry'
   gem 'rspec-rails', '~> 3.5.0'
   gem 'web-console', '~> 2.0'
