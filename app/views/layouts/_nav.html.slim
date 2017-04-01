@@ -76,6 +76,15 @@ header#topnav
               a.dropdown-toggle.waves-effect.waves-light.profile.visible-xs aria-expanded="true" data-toggle="dropdown" href=""
                 i.fa.fa-user-o
               ul.dropdown-menu
+                - if current_user.is_admin?
+                  li
+                    a href="#{dashboard_path}"
+                      i.fa.fa-bar-chart style="margin-right: 3px;"
+                      | Admin dashboard
+                  li
+                    a href="/admin"
+                      i.fa.fa-database style="margin-right: 7px;"
+                      | Admin database manager
                 li
                   a href="#{profile_path}"
                     i.ti-user.m-r-5

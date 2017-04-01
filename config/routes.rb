@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :users, only: [:update]
   resources :courses, only: [:index]
   resources :requests, only: [:create, :destroy]
+
+  get :dashboard, to: "admins#dashboard"
 end
