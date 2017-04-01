@@ -71,17 +71,63 @@ describe AssignmentEngine::Check do
     end
 
   end
-  
-  context "#seminar_creation" do
-  end
-
-  context "#can_schedule?" do
-  end
 
   context "#enough_teachers?" do
+
+    context "enough" do
+
+      before do
+        AssignmentEngine::Check::MIN_REQUIRED_TEACHERS.times do
+          teacher = create(:user)
+          create(:request, course: course, teacher: teacher)
+        end
+      end
+
+      it "returns true" do
+        @ae_check = AssignmentEngine::Check.new(course.id)
+        expect(@ae_check.enough_teachers?).to be true
+      end
+
+    end
+
+    context "not enough" do
+
+      it "returns false" do
+        @ae_check = AssignmentEngine::Check.new(course.id)
+        expect(@ae_check.enough_teachers?).to be false
+      end
+
+    end
+
   end
 
   context "#enough_students?" do
+
+    context "enough" do
+
+      before do
+        AssignmentEngine::Check::MIN_REQUIRED_STUDENTS.times do
+          student = create(:user)
+          create(:request, course: course, student: student)
+        end
+      end
+
+      it "returns true" do
+        @ae_check = AssignmentEngine::Check.new(course.id)
+        expect(@ae_check.enough_students?).to be true
+      end
+
+    end
+
+    context "not enough" do
+
+      it "returns false" do
+        @ae_check = AssignmentEngine::Check.new(course.id)
+        expect(@ae_check.enough_students?).to be false
+      end
+
+    end
+
   end
 
 end
