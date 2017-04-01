@@ -8,8 +8,8 @@ class AssignmentEngine::Check
   MIN_REQUIRED_TEACHERS = 1
   MIN_REQUIRED_STUDENTS = 3
 
-  def initialize(course_id)
-    @course = Course.find(course_id)
+  def initialize(course)
+    @course = course
     @num_teachers_that_can_take_course = @course.unassigned_requesting_teachers.assignable.count
     @num_students_that_can_take_course = @course.unassigned_requesting_students.assignable.count
     @pass = false

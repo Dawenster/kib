@@ -1,5 +1,8 @@
 class Seminar < ActiveRecord::Base
 
+  scope :complete, -> { where(complete: true) }
+  scope :incomplete, -> { where.not(complete: true) }
+
   belongs_to :course
 
   has_many :requests

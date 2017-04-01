@@ -3,8 +3,9 @@ class AssignmentEngine::Seminar
   attr_reader :course
   attr_reader :seminar
 
-  def initialize(course_id)
-    @course = Course.find(course_id)
+  def initialize(args)
+    @course = args[:course]
+    @teacher = args[:teacher]
     @seminar = nil
   end
 
@@ -16,7 +17,7 @@ class AssignmentEngine::Seminar
   end
 
   def assign_teacher
-    @course
+    @seminar.teacher = @teacher
   end
 
   def assign_students

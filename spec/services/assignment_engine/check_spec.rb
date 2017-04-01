@@ -15,7 +15,7 @@ describe AssignmentEngine::Check do
     end
 
     it "finds course" do
-      @ae_check = AssignmentEngine::Check.new(course.id)
+      @ae_check = AssignmentEngine::Check.new(course)
       expect(@ae_check.course).to eq(course)
     end
 
@@ -26,12 +26,12 @@ describe AssignmentEngine::Check do
       end
 
       it "has correct num_teachers_that_can_take_course" do
-        @ae_check = AssignmentEngine::Check.new(course.id)
+        @ae_check = AssignmentEngine::Check.new(course)
         expect(@ae_check.num_teachers_that_can_take_course).to eq(1)
       end
 
       it "has correct num_students_that_can_take_course" do
-        @ae_check = AssignmentEngine::Check.new(course.id)
+        @ae_check = AssignmentEngine::Check.new(course)
         expect(@ae_check.num_students_that_can_take_course).to eq(1)
       end
 
@@ -44,19 +44,19 @@ describe AssignmentEngine::Check do
       end
 
       it "has correct num_teachers_that_can_take_course" do
-        @ae_check = AssignmentEngine::Check.new(course.id)
+        @ae_check = AssignmentEngine::Check.new(course)
         expect(@ae_check.num_teachers_that_can_take_course).to eq(0)
       end
 
       it "has correct num_students_that_can_take_course" do
-        @ae_check = AssignmentEngine::Check.new(course.id)
+        @ae_check = AssignmentEngine::Check.new(course)
         expect(@ae_check.num_students_that_can_take_course).to eq(0)
       end
 
     end
 
     it "pass is false" do
-      @ae_check = AssignmentEngine::Check.new(course.id)
+      @ae_check = AssignmentEngine::Check.new(course)
       expect(@ae_check.pass).to be false
     end
 
@@ -74,7 +74,7 @@ describe AssignmentEngine::Check do
       end
 
       it "returns true" do
-        @ae_check = AssignmentEngine::Check.new(course.id)
+        @ae_check = AssignmentEngine::Check.new(course)
         expect(@ae_check.enough_teachers?).to be true
       end
 
@@ -83,7 +83,7 @@ describe AssignmentEngine::Check do
     context "not enough" do
 
       it "returns false" do
-        @ae_check = AssignmentEngine::Check.new(course.id)
+        @ae_check = AssignmentEngine::Check.new(course)
         expect(@ae_check.enough_teachers?).to be false
       end
 
@@ -103,7 +103,7 @@ describe AssignmentEngine::Check do
       end
 
       it "returns true" do
-        @ae_check = AssignmentEngine::Check.new(course.id)
+        @ae_check = AssignmentEngine::Check.new(course)
         expect(@ae_check.enough_students?).to be true
       end
 
@@ -112,7 +112,7 @@ describe AssignmentEngine::Check do
     context "not enough" do
 
       it "returns false" do
-        @ae_check = AssignmentEngine::Check.new(course.id)
+        @ae_check = AssignmentEngine::Check.new(course)
         expect(@ae_check.enough_students?).to be false
       end
 

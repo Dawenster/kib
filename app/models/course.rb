@@ -3,6 +3,7 @@ class Course < ActiveRecord::Base
   validates :code, :name, presence: true
 
   scope :active, -> { where(active: true) }
+  scope :inactive, -> { where.not(active: true) }
 
   belongs_to :course_category
 
