@@ -3,12 +3,12 @@ require 'rails_helper'
 describe AssignmentEngine::Teacher do
 
   let(:course) { create(:course) }
-  let(:seminar1) { create(:seminar, :complete) }
-  let(:seminar2) { create(:seminar, :complete) }
-  let(:seminar3) { create(:seminar, :complete) }
-  let(:seminar4) { create(:seminar, :complete) }
-  let(:seminar5) { create(:seminar, :complete) }
-  let(:seminar6) { create(:seminar, :complete) }
+  let(:seminar1) { create(:seminar, :completed) }
+  let(:seminar2) { create(:seminar, :completed) }
+  let(:seminar3) { create(:seminar, :completed) }
+  let(:seminar4) { create(:seminar, :completed) }
+  let(:seminar5) { create(:seminar, :completed) }
+  let(:seminar6) { create(:seminar, :completed) }
   let(:teacher1) { create(:user) }
   let(:teacher2) { create(:user) }
   let(:teacher3) { create(:user) }

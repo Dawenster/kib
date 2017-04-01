@@ -3,7 +3,7 @@ require 'rails_helper'
 describe AssignmentEngine::Check do
 
   let(:course) { create(:course) }
-  let(:seminar) { create(:seminar, :complete) }
+  let(:seminar) { create(:seminar, :completed) }
 
   context "#initialize" do
 

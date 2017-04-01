@@ -1,7 +1,7 @@
 class Seminar < ActiveRecord::Base
 
-  scope :complete, -> { where(complete: true) }
-  scope :incomplete, -> { where.not(complete: true) }
+  scope :completed, -> { where(completed: true) }
+  scope :incomplete, -> { where.not(completed: true) }
 
   belongs_to :course
 

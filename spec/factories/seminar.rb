@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :seminar do
-    trait :complete do
-      complete { true }
+    trait :completed do
+      completed { true }
     end
   end
 end

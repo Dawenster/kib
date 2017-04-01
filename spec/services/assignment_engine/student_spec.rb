@@ -4,13 +4,13 @@ describe AssignmentEngine::Student do
 
   let(:course1) { create(:course) }
   let(:course2) { create(:course) }
-  let(:seminar1) { create(:seminar, :complete) }
-  let(:seminar2) { create(:seminar, :complete) }
-  let(:seminar3) { create(:seminar, :complete) }
-  let(:seminar4) { create(:seminar, :complete) }
-  let(:seminar5) { create(:seminar, :complete) }
-  let(:seminar6) { create(:seminar, :complete) }
-  let(:seminar7) { create(:seminar, :complete) }
+  let(:seminar1) { create(:seminar, :completed) }
+  let(:seminar2) { create(:seminar, :completed) }
+  let(:seminar3) { create(:seminar, :completed) }
+  let(:seminar4) { create(:seminar, :completed) }
+  let(:seminar5) { create(:seminar, :completed) }
+  let(:seminar6) { create(:seminar, :completed) }
+  let(:seminar7) { create(:seminar, :completed) }
   let(:student1) { create(:user) }
   let(:student2) { create(:user) }
   let(:student3) { create(:user) }
