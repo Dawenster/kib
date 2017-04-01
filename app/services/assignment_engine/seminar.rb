@@ -3,6 +3,8 @@ class AssignmentEngine::Seminar
   attr_reader :course
   attr_reader :seminar
 
+  MAX_STUDENTS_ALLOWED_IN_SEMINAR = 5
+
   def initialize(args)
     @course = args[:course]
     @teacher = args[:teacher]
