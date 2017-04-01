@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get :profile, to: "pages#profile"
 
+  resources :users, only: [:update]
   resources :courses, only: [:index]
   resources :requests, only: [:create, :destroy]
 end

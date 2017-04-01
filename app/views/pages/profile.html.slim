@@ -15,7 +15,10 @@
 
       h4
         | Assignable?
-        input.assignable-switch type="checkbox" checked=""
+        - if current_user.assignable
+          input.assignable-switch type="checkbox" checked="checked" data-url="#{user_path(current_user)}"
+        - else
+          input.assignable-switch type="checkbox" data-url="#{user_path(current_user)}"
         i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="If you do not want to be assigned right now (e.g. it's recruiting week for you) then toggle this off"
 
   br
