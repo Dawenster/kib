@@ -13,4 +13,12 @@ class Seminar < ActiveRecord::Base
 
   DEFAULT_DURATION_IN_MIN = 60
 
+  def teacher
+    assigned_requesting_teachers.first
+  end
+
+  def students
+    assigned_requesting_students
+  end
+
 end
