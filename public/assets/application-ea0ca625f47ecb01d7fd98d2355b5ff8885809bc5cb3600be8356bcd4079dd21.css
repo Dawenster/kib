@@ -63,6 +63,10 @@
 }
 
 
+/* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/admins/dashboard.scss */
+.dashboard-page {
+  margin-top: 60px;
+}
 /* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/courses/index.scss */
 .course-index {
   margin-top: 40px;
