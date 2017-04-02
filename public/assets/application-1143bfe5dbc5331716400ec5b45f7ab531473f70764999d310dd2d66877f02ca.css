@@ -99,22 +99,31 @@
     margin-left: 0px !important;
   }
 }
-/* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/profile.scss */
-.profile-page {
-  margin-top: 100px;
+/* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/requests/index.scss */
+.request-index-page {
+  margin-top: 60px;
 }
-/* line 5, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/profile.scss */
-.profile-page h2 small {
+/* line 5, /Users/davidwen/Coding/kib/app/assets/stylesheets/requests/index.scss */
+.request-index-page h2 small {
   margin-left: 10px;
 }
-/* line 10, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/profile.scss */
-.profile-page .question-icon {
+/* line 10, /Users/davidwen/Coding/kib/app/assets/stylesheets/requests/index.scss */
+.request-index-page .question-icon {
   margin-left: 5px;
   cursor: pointer;
 }
-/* line 15, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/profile.scss */
-.profile-page .switchery-default {
-  margin-left: 5px;
+/* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/seminars/edit.scss */
+.seminar-edit-page {
+  margin-top: 60px;
+}
+/* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/seminars/index.scss */
+.seminar-index-page {
+  margin-top: 60px;
+}
+/* line 4, /Users/davidwen/Coding/kib/app/assets/stylesheets/seminars/index.scss */
+.seminar-index-page .panel-sub-title {
+  color: lightgrey;
+  margin-top: 5px;
 }
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
