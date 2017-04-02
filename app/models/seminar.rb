@@ -1,5 +1,7 @@
 class Seminar < ActiveRecord::Base
 
+  scope :finalized, -> { where(finalized: true) }
+  scope :not_finalized, -> { where.not(finalized: true) }
   scope :completed, -> { where(completed: true) }
   scope :incomplete, -> { where.not(completed: true) }
 

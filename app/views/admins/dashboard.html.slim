@@ -1,5 +1,13 @@
 .dashboard-page
-  h2
-    | Admin dashboard
+  h2 Admin dashboard
 
-  = link_to "Assign classes", run_assignment_engine_path, method: :post, class: "btn btn-primary waves-effect waves-light m-b-5"
+  = link_to "Assign classes", run_assignment_engine_path, method: :post, class: "btn btn-primary waves-effect waves-light"
+
+  br
+  br
+
+  = render "seminars_unfinalized", unfinalized_seminars: @unfinalized_seminars
+
+  = render "seminars_finalized", finalized_seminars: @finalized_seminars
+
+  = render "seminars_completed", completed_seminars: @completed_seminars

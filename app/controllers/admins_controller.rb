@@ -4,6 +4,9 @@ class AdminsController < ApplicationController
   before_action :authorize_admin!
 
   def dashboard
+    @unfinalized_seminars = Seminar.not_finalized
+    @finalized_seminars = Seminar.finalized
+    @completed_seminars = Seminar.completed
   end
 
   def run_assignment_engine

@@ -20,7 +20,10 @@ class AssignmentEngine::Seminar
   end
 
   def create_seminar_with_default_duration
-    @seminar = ::Seminar.create(duration_in_min: ::Seminar::DEFAULT_DURATION_IN_MIN)
+    @seminar = ::Seminar.create(
+      course: @course,
+      duration_in_min: ::Seminar::DEFAULT_DURATION_IN_MIN
+    )
   end
 
   def assign_teacher
