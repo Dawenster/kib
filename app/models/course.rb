@@ -17,6 +17,14 @@ class Course < ActiveRecord::Base
   has_many :unassigned_requesting_students, class_name: 'User', through: :unassigned_requests, source: :student
   has_many :unassigned_requesting_teachers, class_name: 'User', through: :unassigned_requests, source: :teacher
 
+  def active?
+    active
+  end
+
+  def inactive?
+    !active?
+  end
+
   def code_and_name
     "#{code} - #{name}"
   end

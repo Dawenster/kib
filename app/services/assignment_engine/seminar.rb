@@ -24,7 +24,10 @@ class AssignmentEngine::Seminar
   end
 
   def assign_teacher
-    @teacher.unassigned_teacher_requests.where(course: @course).update_all(assigned: true)
+    @teacher.unassigned_teacher_requests.where(course: @course).update_all(
+      seminar_id: @seminar.id,
+      assigned: true
+    )
   end
 
   def assign_students

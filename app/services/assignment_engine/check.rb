@@ -21,7 +21,7 @@ class AssignmentEngine::Check
   end
 
   def can_schedule?
-    enough_teachers? || enough_students?
+    enough_teachers? && enough_students?
   end
 
   def enough_teachers?

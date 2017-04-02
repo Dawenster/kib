@@ -15,7 +15,6 @@ describe AssignmentEngine::Seminar do
 
   context "#initialize" do
 
-
     it "sets course" do
       expect(@ae_seminar.course).to eq(course)
     end
@@ -41,7 +40,7 @@ describe AssignmentEngine::Seminar do
 
     before do
       @ae_seminar.create_seminar_with_default_duration
-      create(:request, course: course, teacher: teacher, seminar: @ae_seminar.seminar)
+      create(:request, course: course, teacher: teacher)
     end
 
     it "sets teacher on seminar" do

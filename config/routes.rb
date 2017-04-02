@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :requests, only: [:create, :destroy]
 
   get :dashboard, to: "admins#dashboard"
+  post :run_assignment_engine, to: "admins#run_assignment_engine"
 end
