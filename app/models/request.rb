@@ -15,6 +15,12 @@ class Request < ActiveRecord::Base
 
   before_destroy :user_within_ratio_limits_check_on_destroy
 
+  STATUSES = [
+    PENDING_ASSIGNMENT = "pending_assignment",
+    ASSIGNED = "assigned",
+    COMPLETED = "completed"
+  ]
+
   def role
     return "student" if student_id.present?
     return "teacher" if teacher_id.present?
@@ -30,6 +36,17 @@ class Request < ActiveRecord::Base
 
   def owner
     User.find(student_id || teacher_id)
+  end
+
+  def status
+    if assigned && seminar.completed?
+      snake_cased_status = COMPLETED
+    elsif assigned && seminar.finalized?
+      snake_cased_status = ASSIGNED
+    else
+      snake_cased_status = PENDING_ASSIGNMENT
+    end
+    snake_cased_status.humanize
   end
 
   private

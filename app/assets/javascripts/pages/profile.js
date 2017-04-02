@@ -1,12 +1,12 @@
 $(document).ready(function(){
-  $(".dataTable").DataTable({
-    searching: false,
-    lengthChange: false,
-    paging: false,
-    info: false,
-    ordering: true,
-    order: [[ 1, 'asc' ]]
-  });
+  // $(".dataTable").DataTable({
+  //   searching: false,
+  //   lengthChange: false,
+  //   paging: false,
+  //   info: false,
+  //   ordering: true,
+  //   order: [[ 1, 'asc' ]]
+  // });
 
   var assignableSwitch = document.querySelector(".assignable-switch");
   if (assignableSwitch) {

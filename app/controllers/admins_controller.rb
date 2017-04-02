@@ -5,7 +5,7 @@ class AdminsController < ApplicationController
 
   def dashboard
     @unfinalized_seminars = Seminar.not_finalized
-    @finalized_seminars = Seminar.finalized
+    @finalized_seminars = Seminar.finalized.incomplete
     @completed_seminars = Seminar.completed
   end
 

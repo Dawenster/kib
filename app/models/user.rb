@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   end
 
   def all_requests
-    student_requests + teacher_requests
+    Request.where(id: student_requests.pluck(:id) + teacher_requests.pluck(:id))
   end
 
   def request_ratio(num_student_requests_to_add = 0, num_teacher_requests_to_remove = 0)

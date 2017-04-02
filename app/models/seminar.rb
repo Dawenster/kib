@@ -23,4 +23,12 @@ class Seminar < ActiveRecord::Base
     assigned_requesting_students
   end
 
+  def finalized?
+    finalized
+  end
+
+  def completed?
+    completed
+  end
+
 end

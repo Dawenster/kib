@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def profile
     @user = current_user
-    @requests = @user.all_requests
+    @requests = @user.all_requests.order("created_at DESC")
   end
 
 end
