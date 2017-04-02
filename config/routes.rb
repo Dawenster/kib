@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :requests, only: [:index, :create, :destroy]
 
   get :classes, to: "seminars#index"
+  get "classes/:seminar_id/edit", to: "seminars#edit", as: :edit_class
 
   scope :manage do
     get :dashboard, to: "admins#dashboard"

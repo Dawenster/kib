@@ -28,8 +28,48 @@
 
   .row
     .col-xs-12
-      = link_to "Request classes", courses_path, class: "btn btn-primary waves-effect w-md waves-light"
+      = link_to "Request to be a student", courses_path, class: "btn btn-primary waves-effect w-md waves-light"
+
+  br
+  br
+
+  .logo.logo-lg
+    h2
+      | Classes as teacher
+
+  br
+
+  .row
+    .col-xs-12
+      - if @seminars_as_teacher.any?
+        ul.nav.nav-tabs.navtab-custom
+          li.tab.active
+            a.active href="#upcoming-classes-as-teacher" data-toggle="tab" aria-expanded="true"
+              span
+                | Upcoming
+          li.tab
+            a href="#completed-classes-as-teacher" data-toggle="tab" aria-expanded="true"
+              span
+                | Completed
+        .tab-content
+          #upcoming-classes-as-teacher.tab-pane.active
+            = render "classes_as_teacher", seminars: @seminars_as_teacher.incomplete
+          #completed-classes-as-teacher.tab-pane
+            = render "classes_as_teacher", seminars: @seminars_as_teacher.completed
+      - else
+        p
+          | No classes as teacher yet - start making some requests!
+
+  .row
+    .col-xs-12
+      = link_to "Request to be a teacher", courses_path, class: "btn btn-primary waves-effect w-md waves-light"
       
-  br
-  br
-  br
+
+
+
+
+
+
+
+
+

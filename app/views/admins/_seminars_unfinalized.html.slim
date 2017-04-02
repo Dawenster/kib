@@ -24,4 +24,4 @@ h4
           td = seminar.students.count
           td = link_to_list_of_users(seminar.students, true)
           td = link_to "<i class='fa fa-edit'></i>".html_safe, rails_admin.edit_path(model_name: "seminar", id: seminar.id)
-          td = link_to "<i class='fa fa-check-square-o'></i>".html_safe, finalize_path(seminar_id: seminar.id), method: :post
+          td = link_to "<i class='fa fa-check-square-o'></i>".html_safe, finalize_path(seminar), method: :post
