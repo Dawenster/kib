@@ -4,23 +4,24 @@ h4
     small
       = link_to "Finalize_all", "", class: "btn btn-inverse waves-effect waves-light m-l-5 btn-xs"
 
-table.table.table-hover
-  thead
-    tr
-      th Class ID
-      th Course
-      th Teacher (A. Ratio)
-      th Num students
-      th Students (A. Ratio)
-      th Edit
-      th Finalize
-  tbody
-    - unfinalized_seminars.each do |seminar|
+- if unfinalized_seminars.any?
+  table.table.table-hover
+    thead
       tr
-        td = link_to seminar.id, rails_admin.show_path(model_name: "seminar", id: seminar.id)
-        td = link_to seminar.course.name, rails_admin.show_path(model_name: "course", id: seminar.course.id)
-        td = link_to_list_of_users([seminar.teacher], true)
-        td = seminar.students.count
-        td = link_to_list_of_users(seminar.students, true)
-        td = link_to "<i class='fa fa-edit'></i>".html_safe, rails_admin.edit_path(model_name: "seminar", id: seminar.id)
-        td = link_to "<i class='fa fa-check-square-o'></i>".html_safe, rails_admin.edit_path(model_name: "seminar", id: seminar.id)
+        th Class ID
+        th Course
+        th Teacher (A. Ratio)
+        th Num students
+        th Students (A. Ratio)
+        th Edit
+        th Finalize
+    tbody
+      - unfinalized_seminars.each do |seminar|
+        tr
+          td = link_to seminar.id, rails_admin.show_path(model_name: "seminar", id: seminar.id)
+          td = link_to seminar.course.name, rails_admin.show_path(model_name: "course", id: seminar.course.id)
+          td = link_to_list_of_users([seminar.teacher], true)
+          td = seminar.students.count
+          td = link_to_list_of_users(seminar.students, true)
+          td = link_to "<i class='fa fa-edit'></i>".html_safe, rails_admin.edit_path(model_name: "seminar", id: seminar.id)
+          td = link_to "<i class='fa fa-check-square-o'></i>".html_safe, rails_admin.edit_path(model_name: "seminar", id: seminar.id)
