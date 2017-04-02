@@ -1,26 +1,44 @@
 .row
-  .col-xs-12
-    table.table.table-striped.table-bordered.dataTable.no-footer role="grid" aria-describedby="datatable_info"
-      thead
-        tr
-          th Course
-          th Students
-          th Student emails
-          th Class date and time
-          th Duration
-          th Location
-          th Description
-          th Files
-          th Edit
-      tbody
-        - seminars.each do |seminar|
-          tr
-            td = seminar.course.name
-            td = link_to_list_of_users(seminar.students)
-            td = seminar.students.map{|s| "<div>#{s.email}</div>"}.join("").html_safe
-            td = l(seminar.scheduled_at, format: :date_and_time)
-            td = "#{seminar.duration_in_min} #{'minute'.pluralize(seminar.duration_in_min)}"
-            td = seminar.location.try(:html_safe)
-            td = seminar.description.try(:html_safe)
-            td = link_to "<i class='fa fa-dropbox'></i>".html_safe, "", target: "_blank"
-            td = link_to "<i class='fa fa-edit'></i>".html_safe, edit_class_path(seminar)
+  - if seminars.any?
+    - seminars.each do |seminar|
+      .col-xs-12.col-md-4
+        .panel.panel-color.panel-primary
+          .panel-heading
+            h3.panel-title
+              = seminar.course.code_and_name
+            p.panel-sub-title.font-13.text-muted
+              = l(seminar.scheduled_at, format: :date_and_time) if seminar.scheduled_at.present?
+            p.panel-sub-title.font-13.text-muted
+              i.fa.fa-clock-o.m-r-5
+              = duration_display(seminar)
+          .panel-body
+            .row
+              .col-xs-4
+                | Students:
+              .col-xs-8
+                = link_to_list_of_users(seminar.students)
+            .row
+              .col-xs-4
+                | Emails:
+              .col-xs-8
+                = seminar.students.map{|s| "<div>#{s.email}</div>"}.join("").html_safe
+            .row
+              .col-xs-4
+                | Location:
+              .col-xs-8
+                = seminar.location.try(:html_safe) || "TBD"
+            - if seminar.description
+              .row
+                .col-xs-4
+                  | Description:
+                .col-xs-8
+                  = seminar.description.try(:html_safe)
+            .row
+              .col-xs-12
+                = link_to "<i class='fa fa-dropbox'></i> Edit class files on Dropbox".html_safe, "", target: "_blank", class: "btn btn-inverse waves-effect waves-light m-t-10"
+            .row
+              .col-xs-12
+                = link_to "<i class='fa fa-edit'></i> Edit class details".html_safe, edit_class_path(seminar), class: "btn btn-info waves-effect waves-light m-t-10"
+  - else
+    p.m-l-15
+      | Nothing yet!

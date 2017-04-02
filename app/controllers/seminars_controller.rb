@@ -8,4 +8,8 @@ class SeminarsController < ApplicationController
     @seminars_as_teacher = @user.assigned_seminars_as_teacher.order(:scheduled_at)
   end
 
+  def edit
+    @seminar = Seminar.find(params[:seminar_id])
+  end
+
 end

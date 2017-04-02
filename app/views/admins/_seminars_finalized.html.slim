@@ -17,7 +17,7 @@ h4
       - finalized_seminars.each do |seminar|
         tr
           td = link_to seminar.id, rails_admin.show_path(model_name: "seminar", id: seminar.id)
-          td = link_to seminar.course.name, rails_admin.show_path(model_name: "course", id: seminar.course.id)
+          td = link_to seminar.course.code_and_name, rails_admin.show_path(model_name: "course", id: seminar.course.id)
           td = l(seminar.scheduled_at, format: :date_and_time) if seminar.scheduled_at.present?
           td = link_to_list_of_users([seminar.teacher], true)
           td = seminar.students.count
