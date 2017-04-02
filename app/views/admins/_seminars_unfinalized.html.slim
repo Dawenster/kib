@@ -2,7 +2,7 @@ h4
   b
     = "Classes not finalized (#{unfinalized_seminars.count})"
     small
-      = link_to "Finalize_all", "", class: "btn btn-inverse waves-effect waves-light m-l-5 btn-xs"
+      = link_to "Finalize_all", finalize_all_path, method: :post, class: "btn btn-inverse waves-effect waves-light m-l-5 btn-xs"
 
 - if unfinalized_seminars.any?
   table.table.table-hover
@@ -24,4 +24,4 @@ h4
           td = seminar.students.count
           td = link_to_list_of_users(seminar.students, true)
           td = link_to "<i class='fa fa-edit'></i>".html_safe, rails_admin.edit_path(model_name: "seminar", id: seminar.id)
-          td = link_to "<i class='fa fa-check-square-o'></i>".html_safe, rails_admin.edit_path(model_name: "seminar", id: seminar.id)
+          td = link_to "<i class='fa fa-check-square-o'></i>".html_safe, finalize_path(seminar_id: seminar.id), method: :post

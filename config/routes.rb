@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   resources :courses, only: [:index]
   resources :requests, only: [:create, :destroy]
 
-  get :dashboard, to: "admins#dashboard"
-  post :run_assignment_engine, to: "admins#run_assignment_engine"
+  scope :manage do
+    get :dashboard, to: "admins#dashboard"
+    post :run_assignment_engine, to: "admins#run_assignment_engine"
+    post :finalize_all, to: "admins#finalize_all"
+    post "finalize/:seminar_id", to: "admins#finalize", as: :finalize
+  end
 end
