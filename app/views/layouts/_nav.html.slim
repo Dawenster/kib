@@ -79,16 +79,17 @@ header#topnav
                 - if current_user.is_admin?
                   li
                     a href="#{dashboard_path}"
-                      i.fa.fa-bar-chart style="margin-right: 3px;"
+                      i.ti-dashboard.m-r-5
                       | Admin dashboard
                   li
                     a href="/admin"
-                      i.fa.fa-database style="margin-right: 7px;"
+                      i.ti-server.m-r-5
                       | Admin database manager
+                  hr
                 li
-                  a href="#{profile_path}"
-                    i.ti-user.m-r-5
-                    | Profile
+                  a href="#{requests_path}"
+                    i.ti-flag.m-r-5
+                    | Requests
                 li
                   a href="#{edit_user_registration_path}" 
                     i.ti-settings.m-r-5

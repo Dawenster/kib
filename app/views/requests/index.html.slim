@@ -1,26 +1,13 @@
 .profile-page
-  .text-center
-    .logo.logo-lg
-      h2
-        = @user.full_name
-        small
-          = @user.program_and_year
+  .logo.logo-lg
+    h2
+      | Requests
 
   .text-center.pull-left
     .logo
       h4
         = "Request ratio: #{@user.request_ratio_for_display}"
         i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="#{User::REQUEST_RATIO_EXPLANATION}"
-
-  .text-center.pull-right
-    .logo
-      h4
-        | Assignable?
-        - if current_user.assignable
-          input.assignable-switch type="checkbox" checked="checked" data-url="#{user_path(current_user)}"
-        - else
-          input.assignable-switch type="checkbox" data-url="#{user_path(current_user)}"
-        i.fa.fa-question-circle.popover-item.question-icon data-container="body" data-toggle="popover" data-placement="right" data-content="If you do not want to be assigned right now (e.g. it's recruiting week for you) then toggle this off"
 
   br
 
@@ -46,8 +33,8 @@
   br
 
   .row
-    .col-md-2.col-md-offset-5
-      = link_to "Make more requests", courses_path, class: "btn btn-primary waves-effect w-md waves-light m-b-5 center-block"
+    .col-xs-12
+      = link_to "Make more requests", courses_path, class: "btn btn-primary waves-effect w-md waves-light"
       
   br
   br

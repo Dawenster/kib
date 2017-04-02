@@ -2,6 +2,11 @@ class RequestsController < ApplicationController
 
   before_action :authenticate_user!
 
+  def index
+    @user = current_user
+    @requests = @user.all_requests.order("created_at DESC")
+  end
+
   def create
     request = Request.new(request_params)
     if request.save
@@ -36,9 +41,9 @@ class RequestsController < ApplicationController
   def destroy
     request = Request.find(params[:id])
     if request.destroy
-      redirect_to profile_path, notice: "Successfully cancelled #{request.role} request for: #{request.course.code_and_name}"
+      redirect_to requests_path, notice: "Successfully cancelled #{request.role} request for: #{request.course.code_and_name}"
     else
-      redirect_to profile_path, alert: error_display_as_sentence(request.errors)
+      redirect_to requests_path, alert: error_display_as_sentence(request.errors)
     end
   end
 

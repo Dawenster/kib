@@ -4,6 +4,23 @@
     <a href="<%= edit_user_registration_path %>" class="logo logo-lg"><i class="md md-equalizer"></i> <span>Account settings</span> </a>
   </div>
 
+  <div class="text-center">
+    <div class="logo">
+      <h4>
+        Assignable?
+      </h4>
+      <% if resource.assignable %>
+        <input class="assignable-switch" type="checkbox" checked="checked" data-url="<%= user_path(resource) %>">
+      <% else %>
+        <input class="assignable-switch" type="checkbox" data-url="<%= user_path(resource) %>">
+      <% end %>
+      <i class="fa fa-question-circle popover-item question-icon" data-container="body" data-toggle="popover" data-placement="right" data-content="If you do not want to be assigned right now (e.g. it's recruiting week for you) then toggle this off"></i>
+    </div>
+    
+  </div>
+
+  <br>
+
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal m-t-20" }) do |f| %>
     <%= devise_error_messages! %>
 
