@@ -24,6 +24,14 @@ class Request < ActiveRecord::Base
     assigned
   end
 
+  def name
+    owner.full_name
+  end
+
+  def owner
+    User.find(student_id || teacher_id)
+  end
+
   private
 
   def exactly_one_request_type
