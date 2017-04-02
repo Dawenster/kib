@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :courses, only: [:index]
   resources :requests, only: [:index, :create, :destroy]
 
+  get :classes, to: "seminars#index"
+
   scope :manage do
     get :dashboard, to: "admins#dashboard"
     post :run_assignment_engine, to: "admins#run_assignment_engine"

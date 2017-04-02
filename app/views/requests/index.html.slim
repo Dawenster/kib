@@ -1,4 +1,4 @@
-.profile-page
+.request-index-page
   .logo.logo-lg
     h2
       | Requests
@@ -24,7 +24,7 @@
         tbody
           - @requests.each do |request|
             tr
-              td = "Request to be #{request.role}"
+              td = request.role.capitalize
               td = l(request.created_at, format: :date)
               td = request.course.name
               td = request.status

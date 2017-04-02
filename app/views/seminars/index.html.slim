@@ -1,0 +1,35 @@
+.seminar-index-page
+  .logo.logo-lg
+    h2
+      | Classes as student
+
+  br
+
+  .row
+    .col-xs-12
+      - if @seminars_as_student.any?
+        ul.nav.nav-tabs.navtab-custom
+          li.tab.active
+            a.active href="#upcoming-classes-as-student" data-toggle="tab" aria-expanded="true"
+              span
+                | Upcoming
+          li.tab
+            a href="#completed-classes-as-student" data-toggle="tab" aria-expanded="true"
+              span
+                | Completed
+        .tab-content
+          #upcoming-classes-as-student.tab-pane.active
+            = render "classes_as_student", seminars: @seminars_as_student.incomplete
+          #completed-classes-as-student.tab-pane
+            = render "classes_as_student", seminars: @seminars_as_student.completed
+      - else
+        p
+          | No classes as student yet - start making some requests!
+
+  .row
+    .col-xs-12
+      = link_to "Request classes", courses_path, class: "btn btn-primary waves-effect w-md waves-light"
+      
+  br
+  br
+  br
