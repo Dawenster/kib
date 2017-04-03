@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get :classes, to: "seminars#index"
   get "classes/:seminar_id/edit", to: "seminars#edit", as: :edit_class
+  resources :seminars, only: [:update]
 
   scope :manage do
     get :dashboard, to: "admins#dashboard"

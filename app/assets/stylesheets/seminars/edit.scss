@@ -1,3 +1,15 @@
 .seminar-edit-page {
   margin-top: 60px;
+
+  .form-control {
+    padding-left: 15px !important;
+  }
+
+  textarea {
+    height: auto !important;
+  }
+
+  i.fa-calendar {
+    color: white;
+  }
 }

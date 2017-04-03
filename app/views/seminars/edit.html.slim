@@ -1,4 +1,29 @@
-.seminar-edit-page
-  .logo.logo-lg
-    h2
-      | Edit class
+.seminar-edit-page.wrapper-page
+  .text-center
+    .logo.logo-lg
+      h2
+        | Edit class details
+    p
+      = @seminar.course.code_and_name
+
+
+  = form_for(@seminar, html: { method: :put, class: "form-horizontal m-t-20" }) do |f|
+
+    = f.label :location
+    = f.text_field :location, class: "form-control"
+
+    br
+
+    = f.label :description
+    = f.text_area :description, class: "form-control", rows: 5
+
+    br
+
+    = f.label :scheduled_at, "Scheduled time"
+    .input-group
+      = f.text_field :scheduled_at, class: "form-control", placeholder: "mm/dd/yyyy"
+      span.input-group-addon.bg-primary.b-0.text-white
+        i.fa.fa-calendar
+
+    .form-group.text-right.m-t-20
+      = f.button "Update", class: "btn btn-primary btn-custom waves-effect waves-light w-md m-r-15"
