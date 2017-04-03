@@ -14,6 +14,7 @@ class SeminarsController < ApplicationController
 
   def update
     @seminar = Seminar.find(params[:id])
+    clean_up_scheduled_at
     @seminar.assign_attributes(seminar_params)
     if @seminar.save
       redirect_to classes_path, notice: "Class successfully updated"
@@ -30,6 +31,11 @@ class SeminarsController < ApplicationController
       :description,
       :scheduled_at
     )
+  end
+
+  def clean_up_scheduled_at
+    params[:seminar][:scheduled_at] = DateTime.strptime("#{params[:seminar][:scheduled_at]} CST", "%m/%d/%Y %H:%M %p %Z")
+    params[:seminar][:scheduled_at] -= 1.hour if Time.now.dst?
   end
 
 end

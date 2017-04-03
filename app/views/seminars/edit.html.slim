@@ -21,7 +21,9 @@
 
     = f.label :scheduled_at, "Scheduled time"
     .input-group
-      = f.text_field :scheduled_at, class: "form-control", placeholder: "mm/dd/yyyy"
+      - raw_datetime = @seminar.scheduled_at || Time.current
+      - datetime_string = raw_datetime.strftime("%m/%d/%Y %H:%M")
+      = f.text_field :scheduled_at, class: "form-control", placeholder: "mm/dd/yyyy", value: datetime_string
       span.input-group-addon.bg-primary.b-0.text-white
         i.fa.fa-calendar
 

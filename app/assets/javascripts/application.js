@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require switchery
+//= require moment
 //= require_tree .
