@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :program, :graduation_year, presence: true
   validates_inclusion_of :program, :in => VALID_PROGRAMS, message: "must be selected"
   validates_inclusion_of :graduation_year, :in => VALID_YEARS, message: "must be between #{VALID_YEAR_START} and #{VALID_YEAR_END}"
-  validate :kellogg_email, unless: :should_not_validate_kellogg?
+  # validate :kellogg_email, unless: :should_not_validate_kellogg?
 
   scope :assignable, -> { where(assignable: true) }
   scope :not_assignable, -> { where.not(assignable: true) }
