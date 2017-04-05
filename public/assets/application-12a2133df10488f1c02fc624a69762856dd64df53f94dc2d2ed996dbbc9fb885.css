@@ -93,11 +93,19 @@
   margin: 60px 0px -20px 0px;
   text-align: center;
 }
+/* line 2, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/landing.scss */
+.custom-landing-scss .home-wrapper {
+  margin: 0px !important;
+}
 @media screen and (max-width: 768px) {
-  /* line 3, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/landing.scss */
-  #faq .question, #faq .answer {
+  /* line 8, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/landing.scss */
+  .custom-landing-scss #faq .question, .custom-landing-scss #faq .answer {
     margin-left: 0px !important;
   }
+}
+/* line 14, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/landing.scss */
+.custom-landing-scss .how-it-works-sub-title {
+  font-size: 18px;
 }
 /* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/requests/index.scss */
 .request-index-page {
