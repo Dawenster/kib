@@ -12,4 +12,15 @@ module ApplicationHelper
     links.join("").html_safe
   end
 
+  def mail_to_list_of_users(users)
+    links = []
+    users.each do |user|
+      link = "<div>"
+      link += mail_to(user.email, user.full_name)
+      link += "</div>"
+      links << link
+    end
+    links.join("").html_safe
+  end
+
 end

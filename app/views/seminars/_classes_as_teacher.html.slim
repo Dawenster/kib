@@ -16,12 +16,7 @@
               .col-xs-4
                 | Students:
               .col-xs-8
-                = link_to_list_of_users(seminar.students)
-            .row
-              .col-xs-4
-                | Emails:
-              .col-xs-8
-                = seminar.students.map{|s| "<div>#{s.email}</div>"}.join("").html_safe
+                = mail_to_list_of_users(seminar.students)
             .row
               .col-xs-4
                 | Location:
