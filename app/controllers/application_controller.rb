@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(action) do |user_params|
         user_params.permit(
           :email,
+          :current_password,
           :password,
           :password_confirmation,
           :first_name,
