@@ -1,8 +1,9 @@
 h4
   b
     = "Classes not finalized (#{unfinalized_seminars.count})"
-    small
-      = link_to "Finalize all", finalize_all_path, method: :post, class: "btn btn-inverse waves-effect waves-light m-l-5 btn-xs"
+    - if unfinalized_seminars.any?
+      small
+        = link_to "Finalize all", finalize_all_path, method: :post, class: "btn btn-inverse waves-effect waves-light m-l-5 btn-xs"
 
 - if unfinalized_seminars.any?
   table.table.table-hover
