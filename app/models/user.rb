@@ -11,11 +11,11 @@ class User < ActiveRecord::Base
 
   REQUEST_RATIO_LIMIT = 2
   REQUEST_RATIO_EXPLANATION = "You must teach 1 class for every #{REQUEST_RATIO_LIMIT} #{'class'.pluralize(REQUEST_RATIO_LIMIT)} you take. " \
-                              "Users with ratios greater than #{REQUEST_RATIO_LIMIT} can only request to be teachers (until their ratio falls)."
+                              "Users with ratios greater than or equal to #{REQUEST_RATIO_LIMIT} can only request to be teachers (until their ratio falls)."
 
   ASSIGNMENT_RATIO_LIMIT = 2
   ASSIGNMENT_RATIO_EXPLANATION = "You must teach 1 class for every #{ASSIGNMENT_RATIO_LIMIT} #{'class'.pluralize(ASSIGNMENT_RATIO_LIMIT)} you take. " \
-                                 "Users with ratios greater than #{ASSIGNMENT_RATIO_LIMIT} can only request to be teachers (until their ratio falls)."
+                                 "Users with ratios greater than or equal to #{ASSIGNMENT_RATIO_LIMIT} can only request to be teachers (until their ratio falls)."
 
   KELLOGG_DOMAIN = "kellogg.northwestern.edu"
 

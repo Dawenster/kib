@@ -11,7 +11,7 @@
   br
 
   .row
-    .col-md-8.col-md-offset-2
+    .col-md-8.col-md-offset-2.col-xs-12
       #course-category-accordian.panel-group
         - @course_categories.each_with_index do |cc, i|
           .panel.panel-default
@@ -24,10 +24,10 @@
                 table.table.table-hover
                   thead
                     tr
-                      th Code
+                      th style="width: 125px;" Code 
                       th Name
-                      th.text-center class="#{'disabled-text' if @above_threshold}" Learn
-                      th.text-center Teach
+                      th.text-center style="width: 60px;" class="#{'disabled-text' if @above_threshold}" Learn
+                      th.text-center style="width: 60px;" Teach
                   tbody
                     - cc.courses.active.order(:name).where(id: @course_ids).each do |course|
                       - student_params = {course_id: course.id, student_id: current_user.try(:id)}
