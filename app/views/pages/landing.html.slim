@@ -1,119 +1,121 @@
-section.home.bg-img-1.parallax data-stellar-background-ratio="0.5" 
-  .bg-overlay
-  .container
-    .row
-      .col-sm-12
-        .home-wrapper.text-center
-          h1.animated.fadeInDown.wow data-wow-delay=".1s"
-            | Ever wanted to take that Negotiations class?
-          p.animated.fadeInDown.wow data-wow-delay=".2s" 
-            | We're here to help. JOIN TODAY!
-          a.btn.btn-primary.btn-rounded.w-lg.animated.fadeInDown.wow.main-cta data-wow-delay=".4s"
-            | Learn more
-          .clearfix
+.custom-landing-scss
+  section.home.bg-img-1.parallax data-stellar-background-ratio="0.5" 
+    .bg-overlay
+    .container
+      .row
+        .col-sm-12
+          .home-wrapper.text-center
+            = image_tag "https://s3.amazonaws.com/kellogg-in-a-bottle/logo.png", height: 250
+            h1.animated.fadeInDown.wow data-wow-delay=".1s"
+              | Ever wanted to take that Negotiations class?
+            p.animated.fadeInDown.wow data-wow-delay=".2s" 
+              = "We're here to help. #{link_to '<strong>JOIN TODAY!</strong>'.html_safe, new_user_registration_path}".html_safe
+            a.btn.btn-primary.btn-rounded.w-lg.animated.fadeInDown.wow.main-cta data-wow-delay=".4s"
+              | Learn more
+            .clearfix
 
-section#how-it-works.section
-  .container
-    .row
-      .col-sm-12.text-center
-        h2.title.zoomIn.animated.wow data-wow-delay=".1s"
-          | How It Works ?
-        p.sub-title.zoomIn.animated.wow data-wow-delay=".2s" 
-          | KiB is a matching platform that connects students that want to teach a class with students that want to learn it.
+  section#how-it-works.section
+    .container
+      .row
+        .col-sm-12.text-center
+          h2.title.zoomIn.animated.wow data-wow-delay=".1s"
+            | How It Works ?
+          p.how-it-works-sub-title.sub-title.zoomIn.animated.wow data-wow-delay=".2s"
+            | KiB is a matching platform that connects students that want to teach a class with students that want to learn it.
+            br
+            | After the match, students meet for one-hour sessions to share their learnings and takeaways from that class.
+
+      .row
+        .col-sm-6
+          .service-item.animated.fadeInLeft.wow data-wow-delay=".1s" 
+            i.fa.fa-users
+            .service-detail
+              h4
+                | Peer-to-peer learning
+              p
+                | Unlike other education platforms, KiB classes are led by Kellogg MBA students who have previously taken the class, assuring quality and fostering collaboration and networking.
+
+        .col-sm-6
+          .service-item.animated.fadeInDown.wow data-wow-delay=".3s" 
+            i.fa.fa-handshake-o
+            .service-detail
+              h4
+                | Collaboration is our core
+              p
+                | There are over 180 courses at Kellogg and we have limited time (and bid points). KiB enables students to take advantage of more of what Kellogg has to offer.
+
+  section.fun-facts.bg-img-2.parallax data-stellar-background-ratio="0.5" 
+    .bg-overlay
+    .container
+      .row
+        .col-sm-12
+          .text-center
+            h1.animated.fadeInDown.wow data-wow-delay=".1s"
+              | Spring 2016
+            p.how-it-works-sub-title.animated.fadeInDown.wow data-wow-delay=".2s" 
+              | We piloted the idea last spring and it was a huge success
           br
-          | After the match, students meet for one-hour sessions to share their learnings and takeaways from that class.
+          br
 
-    .row
-      .col-sm-6
-        .service-item.animated.fadeInLeft.wow data-wow-delay=".1s" 
-          i.fa.fa-users
-          .service-detail
-            h4
-              | Peer-to-peer learning
-            p
-              | Unlike other education platforms, KiB classes are led by Kellogg MBA students who have previously taken the class, assuring quality and fostering collaboration and networking.
+      .row.text-center
+        .col-sm-4.facts
+          i.ti-pencil-alt
+          h1
+            span.counter
+              | 95
+          h4
+            | Classes bottled
 
-      .col-sm-6
-        .service-item.animated.fadeInDown.wow data-wow-delay=".3s" 
-          i.fa.fa-handshake-o
-          .service-detail
-            h4
-              | Collaboration is our core
-            p
-              | There are over 180 courses at Kellogg and we have limited time (and bid points). KiB enables students to take advantage of more of what Kellogg has to offer.
+        .col-sm-4.facts
+          i.ti-user
+          h1.counter
+            | 110
+          h4
+            | Students engaged
 
-section.fun-facts.bg-img-2.parallax data-stellar-background-ratio="0.5" 
-  .bg-overlay
-  .container
-    .row
-      .col-sm-12
-        .text-center
-          h1.animated.fadeInDown.wow data-wow-delay=".1s"
-            | Spring 2016
-          p.animated.fadeInDown.wow data-wow-delay=".2s" 
-            | We piloted the idea last spring and it was a huge success
-        br
-        br
+        .col-sm-4.facts
+          i.ti-briefcase
+          h1.counter
+            | 44
+          h4
+            | Different courses
 
-    .row.text-center
-      .col-sm-4.facts
-        i.ti-pencil-alt
-        h1
-          span.counter
-            | 95
-        h4
-          | Classes bottled
+  section#faq.section.bg-gray
+    .container
+      .row
+        .col-sm-12.text-center
+          h1.title.zoomIn.animated.wow data-wow-delay=".1s"
+            | FAQ
 
-      .col-sm-4.facts
-        i.ti-user
-        h1.counter
-          | 110
-        h4
-          | Students engaged
+      br
+      br
 
-      .col-sm-4.facts
-        i.ti-briefcase
-        h1.counter
-          | 44
-        h4
-          | Different courses
+      .row
+        = render "faq_left", { question: "How does it work?", answer: "You will tell us the classes you want to teach and learn. Once a week, we will match students and send out the classes matched. After that, it is up to the teacher to schedule the 1 hour meeting." }
 
-section#faq.section.bg-gray
-  .container
-    .row
-      .col-sm-12.text-center
-        h1.title.zoomIn.animated.wow data-wow-delay=".1s"
-          | FAQ
+        = render "faq_right", { question: "Why should I join?", answer: "This is a great way to review classes you took or learn the takeaways of a class you did not have the chance to take. It is also useful to get ready for your summer internship or for your full time job!" }
 
-    br
-    br
+      .row
+        = render "faq_left", { question: "Do I have to teach?", answer: "Yes, the platform only works if everyone contributes. We created the 1:2 rule – for every class you teach, you can learn two. " }
 
-    .row
-      = render "faq_left", { question: "How does it work?", answer: "You will tell us the classes you want to teach and learn. Once a week, we will match students and send out the classes matched. After that, it is up to the teacher to schedule the 1 hour meeting." }
+        = render "faq_right", { question: "Can I share materials from class?", answer: "No, you can only share your notes from the course, otherwise you might violate the Kellogg Honor Code. We have a file sharing system that might help you develop the material for the class." }
 
-      = render "faq_right", { question: "Why should I join?", answer: "This is a great way to review classes you took or learn the takeaways of a class you did not have the chance to take. It is also useful to get ready for your summer internship or for your full time job!" }
+      .row
+        = render "faq_left", { question: "Do I have to prepare anything?", answer: "Yes. If you are a teacher, we ask you to be prepared for class, by creating a 1-page summary with your own notes and learnings from class that you think are important for others." }
 
-    .row
-      = render "faq_left", { question: "Do I have to teach?", answer: "Yes, the platform only works if everyone contributes. We created the 1:2 rule – for every class you teach, you can learn two. " }
+        = render "faq_right", { question: "What’s the quality of this class?", answer: "This is NOT a substitute for a class. This is a 1-hour meeting with a student teaching and will not have the same quality as a 5-week or 10-week class with an official Kellogg professor." }
 
-      = render "faq_right", { question: "Can I share materials from class?", answer: "No, you can only share your notes from the course, otherwise you might violate the Kellogg Honor Code. We have a file sharing system that might help you develop the material for the class." }
+      .row
+        = render "faq_left", { question: "How many classes can I learn?", answer: "As many as you want, as long as the number of classes you want to learn is less than twice the number of classes you want to teach (1:2 rule)." }
 
-    .row
-      = render "faq_left", { question: "Do I have to prepare anything?", answer: "Yes. If you are a teacher, we ask you to be prepared for class, by creating a 1-page summary with your own notes and learnings from class that you think are important for others." }
+        = render "faq_right", { question: "What are the rules?", answer: "Be committed to participate (i.e. don’t cancel, don’t be late, etc.); respect Kellogg Honor Code and Copyright laws." }
 
-      = render "faq_right", { question: "What’s the quality of this class?", answer: "This is NOT a substitute for a class. This is a 1-hour meeting with a student teaching and will not have the same quality as a 5-week or 10-week class with an official Kellogg professor." }
+      .row
+        = render "faq_left", { question: "Is Kellogg aware of this initiative?", answer: "Yes! This project is part of KETI and has Kellogg full support." }
 
-    .row
-      = render "faq_left", { question: "How many classes can I learn?", answer: "As many as you want, as long as the number of classes you want to learn is less than twice the number of classes you want to teach (1:2 rule)." }
+        = render "faq_right", { question: "I am a 1st year, can I join?", answer: "Every student at Kellogg is more than welcome to join!" }
 
-      = render "faq_right", { question: "What are the rules?", answer: "Be committed to participate (i.e. don’t cancel, don’t be late, etc.); respect Kellogg Honor Code and Copyright laws." }
-
-    .row
-      = render "faq_left", { question: "Is Kellogg aware of this initiative?", answer: "Yes! This project is part of KETI and has Kellogg full support." }
-
-      = render "faq_right", { question: "I am a 1st year, can I join?", answer: "Every student at Kellogg is more than welcome to join!" }
-
-      
+        
 
 
 

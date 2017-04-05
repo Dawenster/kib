@@ -1,7 +1,17 @@
-@media screen and (max-width: 768px) {
-  #faq {
-    .question, .answer {
-      margin-left: 0px !important;
+.custom-landing-scss {
+  .home-wrapper {
+    margin: 0px !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    #faq {
+      .question, .answer {
+        margin-left: 0px !important;
+      }
     }
+  }
+
+  .how-it-works-sub-title {
+    font-size: 18px;
   }
 }
