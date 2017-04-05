@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     stored_location = stored_location_for(:user)
-    stored_location = root_path if stored_location.blank? || stored_location == "/"
+    stored_location = courses_path if stored_location.blank? || stored_location == "/"
     stored_location
   end
 

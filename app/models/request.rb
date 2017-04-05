@@ -73,10 +73,10 @@ class Request < ActiveRecord::Base
 
     user = User.find(student_id || teacher_id)
     if assigned? && user.above_assignment_ratio_threshold?(num_student_requests_to_add, num_teacher_requests_to_remove)
-      errors.add(:base, "Cannot go above assignment threshold")
+      errors.add(:base, "Assignment ratio too high")
       false
     elsif user.above_request_ratio_threshold?(num_student_requests_to_add, num_teacher_requests_to_remove)
-      errors.add(:base, "Cannot go above request threshold")
+      errors.add(:base, "Request ratio too high")
       false
     end
   end
