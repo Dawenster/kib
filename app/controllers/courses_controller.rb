@@ -12,8 +12,8 @@ class CoursesController < ApplicationController
       @course_ids = Course.pluck(:id)
     end
     if current_user.present?
-      @requested_courses_as_student = current_user.unassigned_courses_as_student
-      @requested_courses_as_teacher = current_user.unassigned_courses_as_teacher
+      @requested_courses_as_student = current_user.courses_as_student # Cannot retake
+      @requested_courses_as_teacher = current_user.courses_as_teacher # Cannot retake
       @above_threshold = current_user.above_request_ratio_threshold?(1, 0)
     end
     flash.now[:alert] = "No courses matching your search for '#{@searched_term}'" if @course_ids.empty? && !@searched_term.blank?

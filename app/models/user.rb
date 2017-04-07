@@ -30,6 +30,9 @@ class User < ActiveRecord::Base
   has_many :student_requests, class_name: 'Request', foreign_key: :student_id
   has_many :teacher_requests, class_name: 'Request', foreign_key: :teacher_id
 
+  has_many :courses_as_student, class_name: 'Course', through: :student_requests, source: :course
+  has_many :courses_as_teacher, class_name: 'Course', through: :teacher_requests, source: :course
+
   has_many :assigned_student_requests, -> { assigned }, class_name: 'Request', foreign_key: :student_id, dependent: :delete_all
   has_many :assigned_teacher_requests, -> { assigned }, class_name: 'Request', foreign_key: :teacher_id, dependent: :delete_all
   has_many :unassigned_student_requests, -> { unassigned }, class_name: 'Request', foreign_key: :student_id, dependent: :delete_all
