@@ -93,6 +93,18 @@
   margin: 60px 0px -20px 0px;
   text-align: center;
 }
+/* line 2, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/contact.scss */
+.custom-contact-scss .service-item {
+  text-align: center;
+}
+/* line 6, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/contact.scss */
+.custom-contact-scss .contact-email {
+  font-size: 20px;
+}
+/* line 8, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/contact.scss */
+.custom-contact-scss .contact-email a {
+  color: white !important;
+}
 /* line 2, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/landing.scss */
 .custom-landing-scss .home-wrapper {
   margin: 0px !important;
