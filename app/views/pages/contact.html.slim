@@ -1,0 +1,74 @@
+.custom-contact-scss
+  section.home.bg-img-1.parallax data-stellar-background-ratio="0.5" 
+    .bg-overlay
+    .container
+      .row
+        .col-sm-12
+          .home-wrapper.text-center
+            h1.animated.fadeInDown.wow data-wow-delay=".1s"
+              | About us
+            p.animated.fadeInDown.wow data-wow-delay=".2s" 
+              | Who we are and how to contribute with the project
+            .clearfix
+
+  section#how-it-works.section
+    .container
+      .row
+        .col-sm-12.text-center
+          h2.title.zoomIn.animated.wow data-wow-delay=".1s"
+            | Meet the Team
+          p.how-it-works-sub-title.sub-title.zoomIn.animated.wow data-wow-delay=".2s"
+            | We are excited to bring a peer-to-peer learning model to Kellogg!
+
+      .row
+        .col-sm-4.col-sm-offset-2
+          .service-item.animated.fadeInLeft.wow data-wow-delay=".1s" 
+            .service-detail
+              = image_tag "https://s3.amazonaws.com/kellogg-in-a-bottle/contact/aline.jpg", width: 200, class: "img-circle"
+            h4
+              | Aline Mello
+            p
+              | Class 2017
+
+        .col-sm-4
+          .service-item.animated.fadeInRight.wow data-wow-delay=".1s" 
+            .service-detail
+              = image_tag "https://s3.amazonaws.com/kellogg-in-a-bottle/contact/andre.jpg", width: 200, class: "img-circle"
+            h4
+              | Andre Paim
+            p
+              | Class 2017
+
+  section.fun-facts.bg-img-2.parallax data-stellar-background-ratio="0.5" 
+    .bg-overlay
+    .container
+      .row
+        .col-sm-12
+          .text-center
+            h1.animated.fadeInDown.wow data-wow-delay=".1s"
+              | Any suggestions?
+            p.how-it-works-sub-title.animated.fadeInDown.wow data-wow-delay=".2s" 
+              | Feel free to reach out to us, all feedback is welcome!
+          br
+          br
+
+      .row.text-center
+        .col-xs-12
+          .contact-email
+            = mail_to "kellogginabottle@gmail.com"
+          
+
+  
+        
+
+
+
+
+
+
+
+
+
+
+
+

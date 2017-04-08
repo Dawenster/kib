@@ -12,7 +12,7 @@
   <body class="fixed-left widescreen">
     <%= render "layouts/nav" %>
     <%= render "layouts/notices_and_alerts" %>
-    <% if params[:controller] == "pages" && params[:action] == "landing" %>
+    <% if params[:controller] == "pages" %>
       <%= yield %>
     <% else %>
       <div id="wrapper">

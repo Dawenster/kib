@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   root "pages#landing"
 
+  get :contact, to: "pages#contact"
+
   resources :users, only: [:update]
   resources :courses, only: [:index]
   resources :requests, only: [:index, :create, :destroy]
