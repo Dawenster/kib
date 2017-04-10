@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401223134) do
+ActiveRecord::Schema.define(version: 20170410050613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,12 +46,14 @@ ActiveRecord::Schema.define(version: 20170401223134) do
     t.datetime "scheduled_at"
     t.string   "location"
     t.text     "description"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "course_id"
     t.integer  "duration_in_min"
-    t.boolean  "completed",       default: false
-    t.boolean  "finalized",       default: false
+    t.boolean  "completed",           default: false
+    t.boolean  "finalized",           default: false
+    t.string   "dropbox_folder_path"
+    t.string   "dropbox_url"
   end
 
   create_table "users", force: :cascade do |t|
