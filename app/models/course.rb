@@ -1,6 +1,7 @@
 class Course < ActiveRecord::Base
   
   validates :code, :name, presence: true
+  validates :code, :name, uniqueness: true
 
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where.not(active: true) }
@@ -16,6 +17,7 @@ class Course < ActiveRecord::Base
   has_many :assigned_requesting_teachers, class_name: 'User', through: :assigned_requests, source: :teacher
   has_many :unassigned_requesting_students, class_name: 'User', through: :unassigned_requests, source: :student
   has_many :unassigned_requesting_teachers, class_name: 'User', through: :unassigned_requests, source: :teacher
+
 
   def active?
     active
