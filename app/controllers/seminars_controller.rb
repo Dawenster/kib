@@ -24,8 +24,8 @@ class SeminarsController < ApplicationController
   end
 
   def upload_file_to_dropbox
-    seminar = Seminar.find(params[:id])
     if params[:seminar].present?
+      seminar = Seminar.find(params[:id])
       file_to_upload = params[:seminar][:file]
       dropbox = DropboxTasks.new
       modified_filename = safe_file_name(file_to_upload.original_filename)
@@ -36,6 +36,14 @@ class SeminarsController < ApplicationController
     else
       redirect_to classes_path, alert: "Please select a file first"
     end
+  end
+
+  def delete_dropbox_file
+    seminar = Seminar.find(params[:id])
+    filename = params[:filename]
+    dropbox = DropboxTasks.new
+    dropbox.delete_file("#{seminar.dropbox_folder_path}/#{filename}")
+    redirect_to classes_path, notice: "File #{filename} successfully deleted from Dropbox"
   end
 
   private

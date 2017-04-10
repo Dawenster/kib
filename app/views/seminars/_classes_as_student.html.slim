@@ -35,7 +35,7 @@
                   = seminar.description.try(:html_safe)
             .row
               .col-xs-12
-                = link_to "<i class='fa fa-dropbox'></i> View class files on Dropbox".html_safe, seminar.dropbox_url, target: "_blank", class: "btn btn-inverse waves-effect waves-light m-t-10"
+                = link_to "View class files on Dropbox".html_safe, seminar.dropbox_url, target: "_blank", class: "btn btn-inverse waves-effect waves-light m-t-10"
   - else
     p.m-l-15
       | Nothing yet!

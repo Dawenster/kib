@@ -18,4 +18,12 @@ class DropboxTasks
     @client.put_file(path, file)
   end
 
+  def all_files(path)
+    @client.metadata(path)
+  end
+
+  def delete_file(path)
+    @client.file_delete(path)
+  end
+
 end
