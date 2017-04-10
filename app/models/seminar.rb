@@ -33,4 +33,8 @@ class Seminar < ActiveRecord::Base
     completed
   end
 
+  def unique_folder_path
+    dropbox_folder_path || "#{course.code}/#{id}"
+  end
+
 end

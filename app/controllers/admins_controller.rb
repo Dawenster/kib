@@ -16,14 +16,15 @@ class AdminsController < ApplicationController
 
   def finalize_all
     unfinalized_seminars = Seminar.not_finalized
-    unfinalized_seminars.update_all(finalized: true)
+    unfinalized_seminars.each do |seminar|
+      AssignmentEngine::FinalizeSeminar.new(seminar).run!
+    end
     redirect_to dashboard_path, notice: "Successfully finalized all classes"
   end
 
   def finalize
     seminar = Seminar.find(params[:seminar_id])
-    seminar.finalized = true
-    if seminar.save
+    if AssignmentEngine::FinalizeSeminar.new(seminar).run!
       redirect_to dashboard_path, notice: "Successfully finalized class ID: #{seminar.id}"
     else
       redirect_to dashboard_path, alert: error_display_as_sentence(seminar.errors)
