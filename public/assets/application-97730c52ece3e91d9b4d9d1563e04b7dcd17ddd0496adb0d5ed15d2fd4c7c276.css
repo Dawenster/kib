@@ -157,6 +157,18 @@
   color: lightgrey;
   margin-top: 5px;
 }
+/* line 9, /Users/davidwen/Coding/kib/app/assets/stylesheets/seminars/index.scss */
+.seminar-index-page .add-file-to-dropbox input {
+  background: transparent;
+  border: none;
+  font-style: normal;
+  text-align: left;
+  padding: 0px;
+}
+/* line 17, /Users/davidwen/Coding/kib/app/assets/stylesheets/seminars/index.scss */
+.seminar-index-page .dropbox-file-name {
+  margin-top: 10px;
+}
 /*!
  * Datepicker for Bootstrap v1.4.0 (https://github.com/eternicode/bootstrap-datepicker)
  *
