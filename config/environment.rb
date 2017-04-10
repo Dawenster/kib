@@ -7,3 +7,5 @@ load(app_environment_variables) if File.exists?(app_environment_variables)
 
 # Initialize the Rails application.
 Rails.application.initialize!
+
+require 'dropbox_sdk'
