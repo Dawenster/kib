@@ -1,6 +1,6 @@
 class Seminar < ActiveRecord::Base
 
-  validates :dropbox_folder_path, :dropbox_url, uniqueness: true
+  validates :dropbox_folder_path, :dropbox_url, uniqueness: true, allow_nil: true
 
   scope :finalized, -> { where(finalized: true) }
   scope :not_finalized, -> { where.not(finalized: true) }
