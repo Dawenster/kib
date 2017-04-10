@@ -23,6 +23,21 @@ class SeminarsController < ApplicationController
     end
   end
 
+  def upload_file_to_dropbox
+    seminar = Seminar.find(params[:id])
+    if params[:seminar].present?
+      file_to_upload = params[:seminar][:file]
+      dropbox = DropboxTasks.new
+      modified_filename = safe_file_name(file_to_upload.original_filename)
+      upload_path_name = upload_path(seminar, modified_filename)
+      dropbox.add_file(upload_path_name, file_to_upload.tempfile)
+
+      redirect_to classes_path, notice: "File #{modified_filename} successfully added to Dropbox"
+    else
+      redirect_to classes_path, alert: "Please select a file first"
+    end
+  end
+
   private
 
   def seminar_params
@@ -38,6 +53,16 @@ class SeminarsController < ApplicationController
       params[:seminar][:scheduled_at] = DateTime.strptime("#{params[:seminar][:scheduled_at]} CST", "%m/%d/%Y %H:%M %p %Z")
       params[:seminar][:scheduled_at] -= 1.hour if Time.now.dst?
     end
+  end
+
+  def upload_path(seminar, modified_filename)
+    "#{seminar.dropbox_folder_path}/#{modified_filename}"
+  end
+
+  def safe_file_name(filename)
+    filename_parts = filename.split(".")
+    extension = filename_parts.pop
+    filename_parts.join("").parameterize + ".#{extension}"
   end
 
 end

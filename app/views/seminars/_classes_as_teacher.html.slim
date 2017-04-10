@@ -30,10 +30,25 @@
                   = seminar.description.try(:html_safe)
             .row
               .col-xs-12
-                = link_to "<i class='fa fa-dropbox'></i> Edit class files on Dropbox".html_safe, "", target: "_blank", class: "btn btn-inverse waves-effect waves-light m-t-10"
+                = link_to "<i class='fa fa-edit'></i> Edit class details".html_safe, edit_class_path(seminar), class: "btn btn-info waves-effect waves-light m-t-10"
             .row
               .col-xs-12
-                = link_to "<i class='fa fa-edit'></i> Edit class details".html_safe, edit_class_path(seminar), class: "btn btn-info waves-effect waves-light m-t-10"
+                br
+                = form_for seminar, url: upload_file_to_dropbox_seminar_path(seminar) do |f|
+                  = f.file_field :file
+                  = f.submit "Add file to Dropbox", class: "btn btn-inverse waves-effect waves-light m-t-10 add-file-to-dropbox"
+                / form action="#{upload_file_to_dropbox_seminar_path(seminar)}" method="post" authenticity_token="true"
+                /   input type="file" name="file_to_upload" id="fileToUpload"
+                /   input type="submit" value="Add file to Dropbox" name="submit" class="btn btn-inverse waves-effect waves-light m-t-10 add-file-to-dropbox"
+
+            .row
+              .col-xs-12
+                = link_to "Remove files from Dropbox".html_safe, "", target: "_blank", class: "btn btn-danger waves-effect waves-light m-t-10"
+            .row
+              .col-xs-12
+                .m-t-10.hidden class="current-files-on-dropbox-#{seminar.id}"
+                  | Current files on Dropbox:
+
   - else
     p.m-l-15
       | Nothing yet!

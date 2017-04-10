@@ -14,4 +14,8 @@ class DropboxTasks
     @client.shares(path)
   end
 
+  def add_file(path, file)
+    @client.put_file(path, file)
+  end
+
 end

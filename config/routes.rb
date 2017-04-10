@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
   get :classes, to: "seminars#index"
   get "classes/:seminar_id/edit", to: "seminars#edit", as: :edit_class
-  resources :seminars, only: [:update]
+  resources :seminars, only: [:update] do
+    member do
+      patch :upload_file_to_dropbox
+    end
+  end
 
   scope :manage do
     get :dashboard, to: "admins#dashboard"
