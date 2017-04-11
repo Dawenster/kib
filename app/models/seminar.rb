@@ -34,7 +34,7 @@ class Seminar < ActiveRecord::Base
   end
 
   def unique_folder_path
-    dropbox_folder_path || "#{ENV["KIB_ENVIRONMENT"]}/#{course.code}/#{id}"
+    dropbox_folder_path || "#{ENV["KIB_ENVIRONMENT"]}/#{course.code}/#{id}-#{teacher.full_name.parameterize}"
   end
 
 end
