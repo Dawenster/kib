@@ -39,9 +39,9 @@ class Request < ActiveRecord::Base
   end
 
   def status
-    if assigned && seminar.completed?
+    if assigned && seminar.present? && seminar.completed?
       snake_cased_status = COMPLETED
-    elsif assigned && seminar.finalized?
+    elsif assigned && seminar.present? && seminar.finalized?
       snake_cased_status = ASSIGNED
     else
       snake_cased_status = PENDING_ASSIGNMENT

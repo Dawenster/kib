@@ -28,7 +28,10 @@
               td = l(request.created_at, format: :date)
               td = request.course.code_and_name
               td = request.status
-              td = link_to "Cancel", request_path(request), method: :delete, class: "btn btn-pink waves-effect waves-light m-b-5 btn-xs"
+              - if request.assigned
+                td -
+              - else
+                td = link_to "Cancel", request_path(request), method: :delete, class: "btn btn-pink waves-effect waves-light m-b-5 btn-xs"
 
   br
 
