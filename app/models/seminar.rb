@@ -33,6 +33,18 @@ class Seminar < ActiveRecord::Base
     completed
   end
 
+  def incomplete?
+    !completed?
+  end
+
+  def scheduled_in_the_past?
+    scheduled_at <= Time.current
+  end
+
+  def should_be_completed?
+    scheduled_at.present? && incomplete? && scheduled_in_the_past?
+  end
+
   def unique_folder_path
     dropbox_folder_path || "#{ENV["KIB_ENVIRONMENT"]}/#{course.code}/#{id}-#{teacher.full_name.parameterize}"
   end

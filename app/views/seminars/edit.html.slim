@@ -30,10 +30,9 @@
     .form-group.text-right.m-t-20
       = f.button "Update", class: "btn btn-primary btn-custom waves-effect waves-light w-md m-r-15"
 
-  p.complete-class-text
-    | Once you finish the class, click below to mark this class as completed. You will not be able to update class details or add/remove files from dropbox afterwards.
+    p.complete-class-text
+      | Once you finish the class, click below to mark this class as completed. You will not be able to update class details or add/remove files from dropbox afterwards.
 
-  = form_for(@seminar, html: { method: :put, class: "form-horizontal m-t-20" }) do |f|
     .form-group.text-right.m-t-20
       = f.hidden_field :completed, value: true
       = f.button "Mark as completed", class: "btn btn-inverse btn-custom waves-effect waves-light w-md m-r-15"

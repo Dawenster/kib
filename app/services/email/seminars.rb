@@ -23,4 +23,13 @@ class Email::Seminars
     end
   end
 
+  def self.ask_teachers_if_seminars_completed
+    Seminar.finalized.incomplete.each do |seminar|
+      if seminar.should_be_completed?
+        teacher = seminar.teacher
+        SeminarMailer.ask_if_seminar_complete(teacher, seminar).deliver_now
+      end
+    end
+  end
+
 end
