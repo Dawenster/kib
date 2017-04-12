@@ -31,11 +31,11 @@ class Request < ActiveRecord::Base
   end
 
   def name
-    owner.full_name
+    owner.try(:full_name)
   end
 
   def owner
-    User.find(student_id || teacher_id)
+    User.find_by_id(student_id || teacher_id)
   end
 
   def status
