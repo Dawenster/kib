@@ -9,6 +9,9 @@ class Seminar < ActiveRecord::Base
 
   belongs_to :course
 
+  has_many :reviews
+  has_many :reviewed_users, class_name: 'User', through: :reviews, source: :user
+
   has_many :requests
 
   has_many :assigned_requests, -> { assigned }, class_name: 'Request', foreign_key: :seminar_id

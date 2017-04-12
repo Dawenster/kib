@@ -31,6 +31,9 @@ class User < ActiveRecord::Base
   scope :assignable, -> { where(assignable: true) }
   scope :not_assignable, -> { where.not(assignable: true) }
 
+  has_many :reviews
+  has_many :seminars_reviewed, class_name: 'Seminar', through: :reviews, source: :seminar
+
   has_many :student_requests, class_name: 'Request', foreign_key: :student_id
   has_many :teacher_requests, class_name: 'Request', foreign_key: :teacher_id
 
