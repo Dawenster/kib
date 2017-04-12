@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  include ServerMethods
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -24,6 +27,7 @@ class User < ActiveRecord::Base
   validates_inclusion_of :graduation_year, :in => VALID_YEARS, message: "must be between #{VALID_YEAR_START} and #{VALID_YEAR_END}"
   validate :kellogg_email, unless: :should_not_validate_kellogg?
 
+  scope :admin, -> { where(admin: true) }
   scope :assignable, -> { where(assignable: true) }
   scope :not_assignable, -> { where.not(assignable: true) }
 
@@ -112,6 +116,10 @@ class User < ActiveRecord::Base
 
   def above_assignment_ratio_threshold?(num_student_requests_to_add = 0, num_teacher_requests_to_remove = 0)
     assignment_ratio(num_student_requests_to_add, num_teacher_requests_to_remove) > ASSIGNMENT_RATIO_LIMIT
+  end
+
+  def can_send_email?
+    kib_production? || is_admin?
   end
 
   private
