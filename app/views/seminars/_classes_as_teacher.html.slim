@@ -28,15 +28,16 @@
                   | Description:
                 .col-xs-8
                   = seminar.description.try(:html_safe)
-            .row
-              .col-xs-12
-                = link_to "Edit class details".html_safe, edit_class_path(seminar), class: "btn btn-info waves-effect waves-light m-t-10"
-            .row
-              .col-xs-12
-                br
-                = form_for seminar, url: upload_file_to_dropbox_seminar_path(seminar) do |f|
-                  = f.file_field :file
-                  = f.submit "Add file to Dropbox", class: "btn btn-inverse waves-effect waves-light m-t-10 add-file-to-dropbox"
+            - unless seminar.completed
+              .row
+                .col-xs-12
+                  = link_to "Edit class details".html_safe, edit_class_path(seminar), class: "btn btn-info waves-effect waves-light m-t-10"
+              .row
+                .col-xs-12
+                  br
+                  = form_for seminar, url: upload_file_to_dropbox_seminar_path(seminar) do |f|
+                    = f.file_field :file
+                    = f.submit "Add file to Dropbox", class: "btn btn-inverse waves-effect waves-light m-t-10 add-file-to-dropbox"
 
             .row
               .col-xs-12

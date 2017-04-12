@@ -52,7 +52,8 @@ class SeminarsController < ApplicationController
     params.require(:seminar).permit(
       :location,
       :description,
-      :scheduled_at
+      :scheduled_at,
+      :completed
     )
   end
 
