@@ -10,6 +10,17 @@
     = f.hidden_field :user_id, value: current_user.id
     = f.hidden_field :seminar_id, value: @seminar.id
 
+    label
+      | Overall rating for class
+    br
+
+    .review-rating-section
+      - 1.upto(5) do |i|
+        = f.radio_button :rating, i, checked: @review.rating == i
+        = f.label :rating, i
+
+    br
+
     = f.label :feedback_for_teacher
     = f.text_area :feedback_for_teacher, class: "form-control", rows: 5
 
