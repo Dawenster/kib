@@ -11,6 +11,8 @@ header#topnav
 
         ul.nav.navbar-nav.navbar-right.pull-right
           li.hidden-xs
+            = link_to "About us", about_path
+          li.hidden-xs
             = link_to "Courses", courses_path
 
           li
@@ -121,6 +123,8 @@ header#topnav
     .container
       #navigation
         ul.navigation-menu
+          li
+            = link_to "About us", about_path
           li
             = link_to "Courses", courses_path
           - if user_signed_in?
