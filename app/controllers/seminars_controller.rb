@@ -16,7 +16,9 @@ class SeminarsController < ApplicationController
     @seminar = Seminar.find(params[:id])
     clean_up_scheduled_at
     @seminar.assign_attributes(seminar_params)
+    newly_completed = @seminar.newly_completed?
     if @seminar.save
+      Email::Seminars.new(@seminar).notify_students_to_leave_review if newly_completed
       redirect_to classes_path, notice: "Class successfully updated"
     else
       render "edit", alert: error_display_as_sentence(@seminar.errors)

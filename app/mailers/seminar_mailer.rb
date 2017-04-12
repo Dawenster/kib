@@ -27,4 +27,13 @@ class SeminarMailer < ApplicationMailer
     mail(to: email, subject: "Have you completed teaching #{@course.code}?")
   end
 
+  def ask_student_for_review(user, seminar)
+    @user = user
+    @course = seminar.course
+    @teacher = seminar.teacher
+    @url  = Rails.application.routes.url_helpers.review_seminar_url(id: seminar.id, host: ENV["HOST"])
+    email = email_to_use(@user)
+    mail(to: email, subject: "Please review #{@course.code}")
+  end
+
 end

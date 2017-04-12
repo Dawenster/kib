@@ -52,4 +52,8 @@ class Seminar < ActiveRecord::Base
     dropbox_folder_path || "#{ENV["KIB_ENVIRONMENT"]}/#{course.code}/#{id}-#{teacher.full_name.parameterize}"
   end
 
+  def newly_completed?
+    completed_changed? && completed?
+  end
+
 end

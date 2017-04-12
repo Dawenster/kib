@@ -32,4 +32,14 @@ class Email::Seminars
     end
   end
 
+  def notify_students_to_leave_review
+    @seminar.students.each do |student|
+      begin
+        SeminarMailer.ask_student_for_review(student, @seminar).deliver_now
+      rescue => e
+        Rollbar.error(e, student_id: student.try(:id))
+      end
+    end
+  end
+
 end
