@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   resources :users, only: [:update]
   resources :courses, only: [:index]
   resources :requests, only: [:index, :create, :destroy]
+  resources :reviews, except: [:index, :new, :show]
 
   get :classes, to: "seminars#index"
   get "classes/:seminar_id/edit", to: "seminars#edit", as: :edit_class
   resources :seminars, only: [:update] do
     member do
+      get :review
       patch :upload_file_to_dropbox
       delete :delete_dropbox_file
     end

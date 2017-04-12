@@ -46,6 +46,11 @@ class SeminarsController < ApplicationController
     redirect_to classes_path, notice: "File #{filename} successfully deleted from Dropbox"
   end
 
+  def review
+    @seminar = Seminar.find(params[:id])
+    @review = Review.new
+  end
+
   private
 
   def seminar_params

@@ -1,0 +1,10 @@
+.seminar-edit-page.wrapper-page
+  .text-center
+    .logo.logo-lg
+      h2
+        | Edit review
+
+  = render "reviews/form"
+
+  .pull-right
+    = link_to "Delete", review_path(@review), method: :delete

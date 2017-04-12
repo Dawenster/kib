@@ -33,9 +33,16 @@
                   | Description:
                 .col-xs-8
                   = seminar.description.try(:html_safe)
+
+            - if current_user.already_reviewed?(seminar)
+              = link_to "Edit review", edit_review_path(current_user.review_for(seminar)), class: "btn btn-primary waves-effect waves-light m-t-10"
+            - else
+              = link_to "Write a review", review_seminar_path(seminar), class: "btn btn-primary waves-effect waves-light m-t-10"
+
             .row
               .col-xs-12
                 = link_to "View class files on Dropbox".html_safe, seminar.dropbox_url, target: "_blank", class: "btn btn-inverse waves-effect waves-light m-t-10"
+
   - else
     p.m-l-15
       | Nothing yet!

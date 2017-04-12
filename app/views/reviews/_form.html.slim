@@ -1,0 +1,22 @@
+.review-form
+  .text-center
+    p
+      = @seminar.course.code_and_name
+    p
+      = "Teacher: #{@seminar.teacher.full_name}"
+
+  = form_for(@review, html: {class: "form-horizontal m-t-20" }) do |f|
+    
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :seminar_id, value: @seminar.id
+
+    = f.label :feedback_for_teacher
+    = f.text_area :feedback_for_teacher, class: "form-control", rows: 5
+
+    br
+
+    = f.label :feedback_for_kib, "Feedback for Kellogg in a Bottle"
+    = f.text_area :feedback_for_kib, class: "form-control", rows: 5
+
+    .form-group.text-right.m-t-20
+      = f.button "Submit", class: "btn btn-primary btn-custom waves-effect waves-light w-md m-r-15"

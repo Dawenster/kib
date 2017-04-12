@@ -125,6 +125,14 @@ class User < ActiveRecord::Base
     kib_production? || is_admin?
   end
 
+  def already_reviewed?(seminar)
+    review_for(seminar).present?
+  end
+
+  def review_for(seminar)
+    Review.where(seminar_id: seminar.id, user_id: self.id).first
+  end
+
   private
 
   def kellogg_email
