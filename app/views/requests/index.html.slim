@@ -31,7 +31,9 @@
               - if request.assigned
                 td -
               - else
-                td = link_to "Cancel", request_path(request), method: :delete, class: "btn btn-pink waves-effect waves-light m-b-5 btn-xs"
+                td
+                  a.btn.btn-pink.waves-effect.waves-light.m-b-5.btn-xs.cancel-request-btn data-url="#{request_path(request)}" data-request-role="#{request.role}" data-request-course="#{request.course.code_and_name}"
+                    | Cancel
 
   br
 

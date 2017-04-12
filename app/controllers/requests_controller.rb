@@ -40,10 +40,15 @@ class RequestsController < ApplicationController
 
   def destroy
     request = Request.find(params[:id])
-    if request.destroy
-      redirect_to requests_path, notice: "Successfully cancelled #{request.role} request for: #{request.course.code_and_name}"
-    else
-      redirect_to requests_path, alert: error_display_as_sentence(request.errors)
+    respond_to do |format|
+      if request.destroy
+        success_message = "Successfully cancelled #{request.role} request for: #{request.course.code_and_name}"
+        flash[:notice] = success_message
+        render json: { message: success_message } and return
+      else
+        flash[:alert] = request.errors
+        render json: { errors: request.errors } and return
+      end
     end
   end
 
