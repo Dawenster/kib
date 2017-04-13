@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 
   get :classes, to: "seminars#index"
   get "classes/:seminar_id/edit", to: "seminars#edit", as: :edit_class
+  get "classes/:seminar_id/review", to: "seminars#review", as: :review_class
+  
   resources :seminars, only: [:update] do
     member do
-      get :review
       patch :upload_file_to_dropbox
       delete :delete_dropbox_file
     end

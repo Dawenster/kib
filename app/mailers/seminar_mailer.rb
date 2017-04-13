@@ -31,7 +31,7 @@ class SeminarMailer < ApplicationMailer
     @user = user
     @course = seminar.course
     @teacher = seminar.teacher
-    @url  = Rails.application.routes.url_helpers.review_seminar_url(id: seminar.id, host: ENV["HOST"])
+    @url  = Rails.application.routes.url_helpers.review_class_url(seminar_id: seminar.id, host: ENV["HOST"])
     email = email_to_use(@user)
     mail(to: email, subject: "Please review #{@course.code}")
   end

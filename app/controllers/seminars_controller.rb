@@ -10,6 +10,8 @@ class SeminarsController < ApplicationController
 
   def edit
     @seminar = Seminar.find(params[:seminar_id])
+    redirect_to back_or_default, alert: "You cannot edit this class anymore" and return if @seminar.completed
+    redirect_to back_or_default, alert: "You cannot edit this class" and return if @seminar.teacher != current_user
   end
 
   def update
@@ -49,7 +51,10 @@ class SeminarsController < ApplicationController
   end
 
   def review
-    @seminar = Seminar.find(params[:id])
+    @seminar = Seminar.find(params[:seminar_id])
+    redirect_to back_or_default, alert: "You cannot review your own class" and return if @seminar.teacher == current_user
+    redirect_to back_or_default, alert: "You did not take this class" and return if !@seminar.students.include?(current_user)
+    redirect_to back_or_default, alert: "Class is not completed yet" and return if @seminar.incomplete?
     @review = Review.new
   end
 

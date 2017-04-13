@@ -18,6 +18,14 @@ class ApplicationController < ActionController::Base
     errors.full_messages.to_sentence.downcase.capitalize
   end
 
+  def back_or_default(default = root_path)
+    if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+      :back
+    else
+      default
+    end
+  end
+
   protected
 
   def store_current_location
