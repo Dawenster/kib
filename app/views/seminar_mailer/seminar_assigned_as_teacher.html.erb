@@ -71,10 +71,13 @@ background-color: #f6f6f6;
                     Good news! We were able to create a Kellogg in a Bottle class for <%= @course.code_and_name %>, which you requested to be a teacher for.
                   </td>
                 </tr><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                    Your students are <%= @students_as_string %>. Your next step as teacher is to reach out to everyone by email and coordinate a time and location for the class.
+                    Your students are: <%= @students_as_string.html_safe %>
                   </td>
                 </tr><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                    You can start creating class materials now. When you have confirmed a time and location with all the students, you should update these details on the "Classes" page. This is also where you would upload your class materials, when completed.
+                    Your next step as a teacher is to reach out to everyone by email and coordinate a 1-hour slot and location for the class.
+                  </td>
+                </tr><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                    You can start creating class materials now. When you have confirmed a time and location with all the students, you should update these details on the “Classes” page. This is also where you would upload your class materials, when completed.
                   </td>
                 </tr><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                     Thank you for being a teacher!
@@ -84,6 +87,17 @@ background-color: #f6f6f6;
                   </td>
                 </tr><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                     &mdash; Your friendly KIB team
+                  </td>
+                </tr><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                    <div>
+                      Tips:
+                    </div>
+                    <ol>
+                      <li>We suggest that you schedule classes during lunch time (12:15 - 1:15pm) or from 5 - 6pm.</li>
+                      <li>Go through your notes and prepare a 1-2 page summary of the course. This will help you prepare for the class as well as guide the students during the class.</li>
+                      <li>AVOID CANCELLING: You are the most important person for this class to work; pick a time you are 100% sure you can do.</li>
+                      <li>Remember that Honor Code still applies; do not use professor materials or share information about cases or exams.</li>
+                    </ol>
                   </td>
                 </tr></table></td>
           </tr></table><div class="footer" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; clear: both; color: #999; margin: 0; padding: 20px;">
