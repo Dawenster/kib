@@ -93,16 +93,16 @@
   margin: 60px 0px -20px 0px;
   text-align: center;
 }
-/* line 2, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/contact.scss */
-.custom-contact-scss .service-item {
+/* line 2, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/about.scss */
+.custom-about-scss .service-item {
   text-align: center;
 }
-/* line 6, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/contact.scss */
-.custom-contact-scss .contact-email {
+/* line 6, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/about.scss */
+.custom-about-scss .contact-email {
   font-size: 20px;
 }
-/* line 8, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/contact.scss */
-.custom-contact-scss .contact-email a {
+/* line 8, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/about.scss */
+.custom-about-scss .contact-email a {
   color: white !important;
 }
 /* line 2, /Users/davidwen/Coding/kib/app/assets/stylesheets/pages/landing.scss */
@@ -132,6 +132,10 @@
   margin-left: 5px;
   cursor: pointer;
 }
+/* line 3, /Users/davidwen/Coding/kib/app/assets/stylesheets/reviews/form.scss */
+.review-form .review-rating-section label {
+  margin: 0px 5px;
+}
 /* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/seminars/edit.scss */
 .seminar-edit-page {
   margin-top: 60px;
@@ -147,6 +151,10 @@
 /* line 12, /Users/davidwen/Coding/kib/app/assets/stylesheets/seminars/edit.scss */
 .seminar-edit-page i.fa-calendar {
   color: white;
+}
+/* line 16, /Users/davidwen/Coding/kib/app/assets/stylesheets/seminars/edit.scss */
+.seminar-edit-page .complete-class-text {
+  text-align: right;
 }
 /* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/seminars/index.scss */
 .seminar-index-page {
@@ -32861,8 +32869,9 @@ h6 {
 body, html {
   font-family: 'Roboto' !important;
   background: #f5f5f5;
+  overflow-y: scroll;
 }
-/* line 22, /Users/davidwen/Coding/kib/app/assets/stylesheets/application.scss */
+/* line 23, /Users/davidwen/Coding/kib/app/assets/stylesheets/application.scss */
 body h1, body h2, body h3, body h4, body h5, body h6, body p, body a, html h1, html h2, html h3, html h4, html h5, html h6, html p, html a {
   font-family: 'Roboto' !important;
 }

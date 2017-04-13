@@ -17820,35 +17820,6 @@ return hooks;
 
 })));
 $(document).ready(function(){
-  // $("body").on("click", ".request-btn", function(e) {
-  //   e.preventDefault();
-  //   var url = $(this).data("url");
-  //   var requestRole = $(this).data("request-role");
-  //   var requestCourse = $(this).data("request-course");
-  //   var descriptionText = "You are committing to be a " + requestRole + " for the course:" + "\n" + requestCourse
-
-  //   swal({
-  //     title: "Are you sure?",
-  //     text: descriptionText,
-  //     type: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonText: "Yes!",
-  //     closeOnConfirm: false,
-  //     showLoaderOnConfirm: true
-  //   },
-  //   function(){
-  //     $("button.confirm").attr("disabled", "disabled")
-  //     $.ajax({
-  //       url: url,
-  //       method: "post"
-  //     }).done(function(data) {
-  //       window.location.reload(false);
-  //     })
-  //   });
-  // })
-})
-;
-$(document).ready(function(){
   var assignableSwitch = document.querySelector(".assignable-switch");
   if (assignableSwitch) {
     var init = new Switchery(assignableSwitch, {color: "#28a5d4"});
@@ -17903,15 +17874,32 @@ $(document).ready(function(){
 })
 ;
 $(document).ready(function(){
-  // $(".dataTable").DataTable({
-  //   searching: false,
-  //   lengthChange: false,
-  //   paging: false,
-  //   info: false,
-  //   ordering: true,
-  //   order: [[ 1, 'asc' ]]
-  // });
+  $("body").on("click", ".cancel-request-btn", function(e) {
+    e.preventDefault();
+    var url = $(this).data("url");
+    var requestRole = $(this).data("request-role");
+    var requestCourse = $(this).data("request-course");
+    var descriptionText = "You are cancelling your request to be a " + requestRole + " for:" + "\n" + requestCourse
 
+    swal({
+      title: "Are you sure?",
+      text: descriptionText,
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      closeOnConfirm: false,
+      showLoaderOnConfirm: true
+    },
+    function(){
+      $("button.confirm").attr("disabled", "disabled")
+      $.ajax({
+        url: url,
+        method: "DELETE"
+      }).done(function(data) {
+        window.location.reload(false);
+      })
+    });
+  })
 })
 ;
 $(document).ready(function(){
