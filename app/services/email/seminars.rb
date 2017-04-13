@@ -1,5 +1,7 @@
 class Email::Seminars
 
+  FREQUENCY_OF_CHECK_IN_DAYS = 2
+
   def initialize(seminar)
     @seminar = seminar
   end
@@ -25,9 +27,13 @@ class Email::Seminars
 
   def self.ask_teachers_if_seminars_completed
     Seminar.finalized.incomplete.each do |seminar|
-      if seminar.should_be_completed?
+      if seminar.should_be_completed? && correct_frequency_of_send?(seminar)
         teacher = seminar.teacher
-        SeminarMailer.ask_if_seminar_complete(teacher, seminar).deliver_now
+        begin
+          SeminarMailer.ask_if_seminar_complete(teacher, seminar).deliver_now
+        rescue => e
+          Rollbar.error(e, seminar_id: seminar.try(:id))
+        end
       end
     end
   end
@@ -40,6 +46,14 @@ class Email::Seminars
         Rollbar.error(e, student_id: student.try(:id))
       end
     end
+  end
+
+  def self.correct_frequency_of_send?(seminar)
+    days_since_seminar_scheduled_at(seminar) % FREQUENCY_OF_CHECK_IN_DAYS == 0
+  end
+
+  def self.days_since_seminar_scheduled_at(seminar)
+    (Time.current.to_date - seminar.scheduled_at.to_date).to_i
   end
 
 end
