@@ -5,7 +5,7 @@ class ApplicationMailer < ActionMailer::Base
   def email_to_use(user)
     if user.can_send_email?
       user.email
-    elsif Rails.env.development?
+    elsif test_email.present?
       test_email
     else
       test_sendgrid_email
