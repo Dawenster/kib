@@ -33,7 +33,8 @@
     p.complete-class-text
       | Once you finish the class, click below to mark this class as completed. You will not be able to update class details or add/remove files from dropbox afterwards.
 
-  = form_for(@seminar, html: { method: :put, class: "form-horizontal m-t-20" }) do |f|
+  = form_for(@seminar, html: { method: :put, class: "form-horizontal m-t-20 mark-as-completed-form" }) do |f|
     .form-group.text-right.m-t-20
       = f.hidden_field :completed, value: true
-      = f.button "Mark as completed", class: "btn btn-inverse btn-custom waves-effect waves-light w-md m-r-15"
+      a.btn.btn-inverse.btn-custom.waves-effect.waves-light.w-md.m-r-15.mark-as-completed-btn data-return-url="#{classes_path}"
+        | Mark as completed
