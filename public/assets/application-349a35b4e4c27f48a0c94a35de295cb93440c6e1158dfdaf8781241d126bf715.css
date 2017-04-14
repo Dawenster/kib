@@ -136,6 +136,10 @@
 .review-form .review-rating-section label {
   margin: 0px 5px;
 }
+/* line 8, /Users/davidwen/Coding/kib/app/assets/stylesheets/reviews/form.scss */
+.review-form .field_with_errors {
+  display: inline;
+}
 /* line 1, /Users/davidwen/Coding/kib/app/assets/stylesheets/seminars/edit.scss */
 .seminar-edit-page {
   margin-top: 60px;
