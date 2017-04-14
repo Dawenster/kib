@@ -22,6 +22,14 @@
 
     br
 
+    = f.label :reason_for_taking_seminar, "Reason for taking class"
+    .form-group
+      .col-xs-12
+        = f.select :reason_for_taking_seminar, Review::REASONS_FOR_TAKING_CLASS, { selected: @review.value }, { class: "form-control" }
+        input.form-control.hidden.hidden-reason-for-taking-seminar.m-t-10 name="other_reason_for_taking_seminar" placeholder="Type reason" value="#{@review.other_value}"
+
+    br
+
     = f.label :feedback_for_teacher
     = f.text_area :feedback_for_teacher, class: "form-control", rows: 5
 

@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    clean_up_reason_for_taking_seminar
     review = Review.new(review_params)
     if review.save
       redirect_to classes_path, notice: "Successfully reviewed #{review.seminar.course.code_and_name}"
@@ -18,6 +19,7 @@ class ReviewsController < ApplicationController
 
   def update
     review = Review.find(params[:id])
+    clean_up_reason_for_taking_seminar
     review.assign_attributes(review_params)
     if review.save
       redirect_to classes_path, notice: "Successfully updated review for #{review.seminar.course.code_and_name}"
@@ -45,8 +47,15 @@ class ReviewsController < ApplicationController
       :rating,
       :feedback_for_teacher,
       :feedback_for_kib,
-      :teacher_id
+      :teacher_id,
+      :reason_for_taking_seminar
     )
+  end
+
+  def clean_up_reason_for_taking_seminar
+    if params[:review][:reason_for_taking_seminar] == "Other"
+      params[:review][:reason_for_taking_seminar] = "Other: #{params[:other_reason_for_taking_seminar]}"
+    end
   end
 
 end
