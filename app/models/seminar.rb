@@ -49,7 +49,11 @@ class Seminar < ActiveRecord::Base
   end
 
   def unique_folder_path
-    dropbox_folder_path || "#{ENV["KIB_ENVIRONMENT"]}/#{course.code}/#{id}-#{teacher.full_name.parameterize}"
+    if dropbox_folder_path.present?
+      dropbox_folder_path
+    else
+      "#{ENV["KIB_ENVIRONMENT"]}/#{course.code}/#{id}-#{teacher.full_name.parameterize}"
+    end
   end
 
   def newly_completed?

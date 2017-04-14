@@ -9,8 +9,10 @@ class AssignmentEngine::FinalizeSeminar
     @seminar.dropbox_folder_path = @seminar.unique_folder_path
 
     dropbox = DropboxTasks.new
-    dropbox.create_folder(@seminar.dropbox_folder_path)
-    @seminar.dropbox_url = dropbox.share_folder(@seminar.dropbox_folder_path)["url"]
+    if @seminar.dropbox_folder_path.blank?
+      dropbox.create_folder(@seminar.dropbox_folder_path)
+      @seminar.dropbox_url = dropbox.share_folder(@seminar.dropbox_folder_path)["url"]
+    end
 
     seminar_email = Email::Seminars.new(@seminar)
     seminar_email.notify_all_students_of_finalized_assignment
