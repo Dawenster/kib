@@ -4,11 +4,13 @@ class ReviewsController < ApplicationController
 
   def create
     clean_up_reason_for_taking_seminar
-    review = Review.new(review_params)
-    if review.save
-      redirect_to classes_path, notice: "Successfully reviewed #{review.seminar.course.code_and_name}"
+    @review = Review.new(review_params)
+    if @review.save
+      redirect_to classes_path, notice: "Successfully reviewed #{@review.seminar.course.code_and_name}"
     else
-      redirect_to classes_path, alert: error_display_as_sentence(review.errors)
+      @seminar = @review.seminar
+      flash.now[:alert] = error_display_as_sentence(@review.errors)
+      render "seminars/review"
     end
   end
 
@@ -18,13 +20,15 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params[:id])
+    @review = Review.find(params[:id])
     clean_up_reason_for_taking_seminar
-    review.assign_attributes(review_params)
-    if review.save
-      redirect_to classes_path, notice: "Successfully updated review for #{review.seminar.course.code_and_name}"
+    @review.assign_attributes(review_params)
+    if @review.save
+      redirect_to classes_path, notice: "Successfully updated review for #{@review.seminar.course.code_and_name}"
     else
-      redirect_to classes_path, alert: error_display_as_sentence(review.errors)
+      @seminar = @review.seminar
+      flash.now[:alert] = error_display_as_sentence(@review.errors)
+      render "seminars/review"
     end
   end
 

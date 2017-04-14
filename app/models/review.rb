@@ -4,6 +4,8 @@ class Review < ActiveRecord::Base
   belongs_to :seminar
   belongs_to :teacher, class_name: User, foreign_key: "teacher_id"
 
+  validates :rating, :feedback_for_teacher, :feedback_for_kib, :reason_for_taking_seminar, presence: true
+
   REASONS_FOR_TAKING_CLASS = [
     "Didn't have enough bid points",
     "Didn't want to spend too many bid points",
@@ -13,7 +15,7 @@ class Review < ActiveRecord::Base
   ]
 
   def value
-    if reason_for_taking_seminar[0..4] == "Other"
+    if reason_is_other?
       "Other"
     else
       reason_for_taking_seminar
@@ -21,11 +23,15 @@ class Review < ActiveRecord::Base
   end
 
   def other_value
-    if reason_for_taking_seminar[0..4] == "Other"
+    if reason_is_other?
       reason_for_taking_seminar[7..-1]
     else
       nil
     end
+  end
+
+  def reason_is_other?
+    reason_for_taking_seminar.present? && reason_for_taking_seminar[0..4] == "Other"
   end
 
 end
