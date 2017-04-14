@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   resources :seminars, only: [:update] do
     member do
+      put :complete
       patch :upload_file_to_dropbox
       delete :delete_dropbox_file
     end

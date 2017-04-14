@@ -18,10 +18,23 @@ class SeminarsController < ApplicationController
     @seminar = Seminar.find(params[:id])
     clean_up_scheduled_at
     @seminar.assign_attributes(seminar_params)
-    newly_completed = @seminar.newly_completed?
 
     if @seminar.save
       success_message = "Class successfully updated"
+      redirect_to classes_path, notice: success_message
+    else
+      errors = error_display_as_sentence(@seminar.errors)
+      redirect_to classes_path, alert: errors
+    end
+  end
+
+  def complete
+    @seminar = Seminar.find(params[:id])
+    @seminar.assign_attributes(seminar_params)
+
+    if @seminar.save
+      Email::Seminars.new(@seminar).notify_students_to_leave_review
+      success_message = "Class successfully completed"
       flash[:notice] = success_message
       render json: { message: success_message, return_path: classes_path }
     else
