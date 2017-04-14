@@ -32869,9 +32869,8 @@ h6 {
 body, html {
   font-family: 'Roboto' !important;
   background: #f5f5f5;
-  overflow-y: scroll;
 }
-/* line 23, /Users/davidwen/Coding/kib/app/assets/stylesheets/application.scss */
+/* line 22, /Users/davidwen/Coding/kib/app/assets/stylesheets/application.scss */
 body h1, body h2, body h3, body h4, body h5, body h6, body p, body a, html h1, html h2, html h3, html h4, html h5, html h6, html p, html a {
   font-family: 'Roboto' !important;
 }
