@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
 
   has_many :reviews
   has_many :seminars_reviewed, class_name: 'Seminar', through: :reviews, source: :seminar
+  has_many :reviews_as_teacher, class_name: 'Review', foreign_key: "teacher_id"
 
   has_many :student_requests, class_name: 'Request', foreign_key: :student_id
   has_many :teacher_requests, class_name: 'Request', foreign_key: :teacher_id
