@@ -12,11 +12,11 @@
           li.tab.active
             a.active href="#upcoming-classes-as-student" data-toggle="tab" aria-expanded="true"
               span
-                | Upcoming
+                = "Upcoming (#{@seminars_as_student.incomplete.count})"
           li.tab
             a href="#completed-classes-as-student" data-toggle="tab" aria-expanded="true"
               span
-                | Completed
+                = "Completed (#{@seminars_as_student.completed.count})"
         .tab-content
           #upcoming-classes-as-student.tab-pane.active
             = render "classes_as_student", seminars: @seminars_as_student.incomplete
@@ -44,11 +44,11 @@
           li.tab.active
             a.active href="#upcoming-classes-as-teacher" data-toggle="tab" aria-expanded="true"
               span
-                | Upcoming
+                = "Upcoming (#{@seminars_as_teacher.incomplete.count})"
           li.tab
             a href="#completed-classes-as-teacher" data-toggle="tab" aria-expanded="true"
               span
-                | Completed
+                = "Completed (#{@seminars_as_teacher.completed.count})"
         .tab-content
           #upcoming-classes-as-teacher.tab-pane.active
             = render "classes_as_teacher", seminars: @seminars_as_teacher.incomplete
