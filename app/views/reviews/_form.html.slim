@@ -9,6 +9,7 @@
     
     = f.hidden_field :user_id, value: current_user.id
     = f.hidden_field :seminar_id, value: @seminar.id
+    = f.hidden_field :teacher_id, value: @seminar.teacher.id
 
     label
       | Overall rating for class

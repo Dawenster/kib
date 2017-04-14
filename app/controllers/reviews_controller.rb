@@ -44,7 +44,8 @@ class ReviewsController < ApplicationController
       :seminar_id,
       :rating,
       :feedback_for_teacher,
-      :feedback_for_kib
+      :feedback_for_kib,
+      :teacher_id
     )
   end
 
