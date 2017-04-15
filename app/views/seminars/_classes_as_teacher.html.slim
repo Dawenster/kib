@@ -46,13 +46,14 @@
             .row
               .col-xs-12
                 - contents = DropboxTasks.new.all_files(seminar.dropbox_folder_path)["contents"]
-                - contents.each do |content|
-                  .dropbox-file-name
-                    - filename = content["path"].split("/").last
-                    = filename
-                    |  (
-                    = link_to "delete", delete_dropbox_file_seminar_path(seminar, filename: filename), method: :delete
-                    | )
+                - if contents.present?
+                  - contents.each do |content|
+                    .dropbox-file-name
+                      - filename = content["path"].split("/").last
+                      = filename
+                      |  (
+                      = link_to "delete", delete_dropbox_file_seminar_path(seminar, filename: filename), method: :delete
+                      | )
 
             .row
               .col-xs-12

@@ -20,6 +20,8 @@ class DropboxTasks
 
   def all_files(path)
     @client.metadata(path)
+  rescue => e
+    Rollbar.error(e)
   end
 
   def delete_file(path)
