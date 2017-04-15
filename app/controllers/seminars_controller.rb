@@ -88,8 +88,9 @@ class SeminarsController < ApplicationController
 
   def clean_up_scheduled_at
     if params[:seminar][:scheduled_at].present?
-      params[:seminar][:scheduled_at] = DateTime.strptime("#{params[:seminar][:scheduled_at]} CST", "%m/%d/%Y %H:%M %p %Z")
-      params[:seminar][:scheduled_at] -= 1.hour if Time.now.dst?
+      zone_name = Time.current.dst? ? "CDT" : "CST"
+      params[:seminar][:scheduled_at] = DateTime.strptime("#{params[:seminar][:scheduled_at]} #{zone_name}", "%m/%d/%Y %H:%M %p %Z")
+      # params[:seminar][:scheduled_at] -= 1.hour if Time.current.dst?
     end
   end
 
