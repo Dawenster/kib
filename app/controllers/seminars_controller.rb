@@ -90,7 +90,6 @@ class SeminarsController < ApplicationController
     if params[:seminar][:scheduled_at].present?
       zone_name = Time.current.dst? ? "CDT" : "CST"
       params[:seminar][:scheduled_at] = DateTime.strptime("#{params[:seminar][:scheduled_at]} #{zone_name}", "%m/%d/%Y %H:%M %p %Z")
-      # params[:seminar][:scheduled_at] -= 1.hour if Time.current.dst?
     end
   end
 
