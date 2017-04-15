@@ -32,6 +32,10 @@ class Seminar < ActiveRecord::Base
     finalized
   end
 
+  def not_finalized?
+    !finalized?
+  end
+
   def completed?
     completed
   end

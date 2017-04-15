@@ -17,6 +17,7 @@ class Request < ActiveRecord::Base
 
   STATUSES = [
     PENDING_ASSIGNMENT = "pending_assignment",
+    PENDING_FINALIZATION = "pending_finalization",
     ASSIGNED = "assigned",
     COMPLETED = "completed"
   ]
@@ -30,6 +31,18 @@ class Request < ActiveRecord::Base
     assigned
   end
 
+  def assigned_and_finalized?
+    assigned && seminar.present? && seminar.finalized?
+  end
+
+  def assigned_and_not_finalized?
+    assigned && seminar.present? && seminar.not_finalized?
+  end
+
+  def assigned_and_completed?
+    assigned && seminar.present? && seminar.completed?
+  end
+
   def name
     owner.try(:full_name)
   end
@@ -39,10 +52,12 @@ class Request < ActiveRecord::Base
   end
 
   def status
-    if assigned && seminar.present? && seminar.completed?
+    if assigned_and_completed?
       snake_cased_status = COMPLETED
-    elsif assigned && seminar.present? && seminar.finalized?
+    elsif assigned_and_finalized?
       snake_cased_status = ASSIGNED
+    elsif assigned
+      snake_cased_status = PENDING_FINALIZATION
     else
       snake_cased_status = PENDING_ASSIGNMENT
     end
