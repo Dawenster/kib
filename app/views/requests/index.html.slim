@@ -27,7 +27,10 @@
               td = request.role.capitalize
               td = l(request.created_at, format: :date)
               td = request.course.code_and_name
-              td = request.status
+              - if request.assigned_and_finalized?
+                td = link_to request.status, classes_path
+              - else
+                td = request.status
               - if request.assigned
                 td -
               - else
