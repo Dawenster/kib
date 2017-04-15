@@ -138,6 +138,16 @@ class User < ActiveRecord::Base
     teacher_requests.where(seminar: seminar).first
   end
 
+  def requested_and_incomplete_courses_as_student
+    request_ids = student_requests.joins("LEFT JOIN seminars ON seminars.id = requests.seminar_id").where("seminars.completed is not true OR seminars.id is null").pluck("requests.course_id")
+    Course.where(id: request_ids)
+  end
+
+  def requested_and_incomplete_courses_as_teacher
+    request_ids = teacher_requests.joins("LEFT JOIN seminars ON seminars.id = requests.seminar_id").where("seminars.completed is not true OR seminars.id is null").pluck("requests.course_id")
+    Course.where(id: request_ids)
+  end
+
   private
 
   def kellogg_email
