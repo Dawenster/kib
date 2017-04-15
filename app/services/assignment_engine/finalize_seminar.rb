@@ -10,7 +10,14 @@ class AssignmentEngine::FinalizeSeminar
     if @seminar.dropbox_folder_path.blank?
       @seminar.dropbox_folder_path = @seminar.unique_folder_path
       dropbox = DropboxTasks.new
-      dropbox.create_folder(@seminar.dropbox_folder_path)
+      begin
+        dropbox.create_folder(@seminar.dropbox_folder_path)
+      rescue => e
+        if e.message.include? "file or folder already exists"
+          @seminar.dropbox_folder_path = "#{@seminar.dropbox_folder_path}-#{SecureRandom.hex(3)}"
+          dropbox.create_folder(@seminar.dropbox_folder_path)
+        end
+      end
       @seminar.dropbox_url = dropbox.share_folder(@seminar.dropbox_folder_path)["url"]
     end
 
