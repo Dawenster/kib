@@ -83,8 +83,8 @@ class User < ActiveRecord::Base
   end
 
   def request_ratio(num_student_requests_to_add = 0, num_teacher_requests_to_remove = 0)
-    num_teacher_requests = teacher_requests.count.to_f - num_teacher_requests_to_remove
-    num_student_requests = student_requests.count + num_student_requests_to_add
+    num_teacher_requests = incomplete_requests_as_teacher.count.to_f - num_teacher_requests_to_remove
+    num_student_requests = incomplete_requests_as_student.count + num_student_requests_to_add
     if num_teacher_requests == 0.0
       num_student_requests
     else
@@ -138,14 +138,28 @@ class User < ActiveRecord::Base
     teacher_requests.where(seminar: seminar).first
   end
 
+  def incomplete_requests_as_student
+    student_requests.joins("LEFT JOIN seminars ON seminars.id = requests.seminar_id").where("seminars.completed is not true OR seminars.id is null")
+  end
+
+  def incomplete_course_ids_as_student
+    incomplete_requests_as_student.pluck("requests.course_id")
+  end
+
   def requested_and_incomplete_courses_as_student
-    request_ids = student_requests.joins("LEFT JOIN seminars ON seminars.id = requests.seminar_id").where("seminars.completed is not true OR seminars.id is null").pluck("requests.course_id")
-    Course.where(id: request_ids)
+    Course.where(id: incomplete_course_ids_as_student)
+  end
+
+  def incomplete_requests_as_teacher
+    teacher_requests.joins("LEFT JOIN seminars ON seminars.id = requests.seminar_id").where("seminars.completed is not true OR seminars.id is null")
+  end
+
+  def incomplete_course_ids_as_teacher
+    incomplete_requests_as_teacher.pluck("requests.course_id")
   end
 
   def requested_and_incomplete_courses_as_teacher
-    request_ids = teacher_requests.joins("LEFT JOIN seminars ON seminars.id = requests.seminar_id").where("seminars.completed is not true OR seminars.id is null").pluck("requests.course_id")
-    Course.where(id: request_ids)
+    Course.where(id: incomplete_course_ids_as_teacher)
   end
 
   private
