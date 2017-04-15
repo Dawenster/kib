@@ -13,10 +13,8 @@ class AssignmentEngine::FinalizeSeminar
       begin
         dropbox.create_folder(@seminar.dropbox_folder_path)
       rescue => e
-        if e.message.include? "file or folder already exists"
-          @seminar.dropbox_folder_path = "#{@seminar.dropbox_folder_path}-#{SecureRandom.hex(3)}"
-          dropbox.create_folder(@seminar.dropbox_folder_path)
-        end
+        # If folder already exists, then don't create another one, but log it
+        Rollbar.error(e, seminar_id: @seminar.try(:id))
       end
       @seminar.dropbox_url = dropbox.share_folder(@seminar.dropbox_folder_path)["url"]
     end
