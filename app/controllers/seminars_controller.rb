@@ -34,6 +34,7 @@ class SeminarsController < ApplicationController
 
     if @seminar.save
       Email::Seminars.new(@seminar).notify_students_to_leave_review
+      Requests::Controller.auto_request_as_teacher(@seminar)
       success_message = "Class successfully completed"
       flash[:notice] = success_message
       render json: { message: success_message, return_path: classes_path }

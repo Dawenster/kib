@@ -134,6 +134,10 @@ class User < ActiveRecord::Base
     Review.where(seminar_id: seminar.id, user_id: self.id).first
   end
 
+  def teacher_request_for(seminar)
+    teacher_requests.where(seminar: seminar).first
+  end
+
   private
 
   def kellogg_email
