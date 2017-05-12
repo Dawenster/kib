@@ -14,45 +14,46 @@
     .col-md-8.col-md-offset-2.col-xs-12
       #course-category-accordian.panel-group
         - @course_categories.each_with_index do |cc, i|
-          .panel.panel-default
-            .panel-heading
-              h4.panel-title
-                a data-toggle="collapse" data-parent="#course-category-accordian" href="##{cc.code}" aria-expanded="#{i == 0 ? 'true' : 'false'}" class="#{i == 0 ? 'expanded' : 'collapsed'}"
-                  = "#{cc.name} (#{cc.code})"
-            .panel-collapse.collapse id="#{cc.code}" class="#{'in' if i == 0}" aria-expanded="#{i == 0 ? 'true' : 'false'}"
-              .panel-body
-                table.table.table-hover
-                  thead
-                    tr
-                      th style="width: 125px;" Code 
-                      th Name
-                      th.text-center style="width: 60px;" class="#{'disabled-text' if @above_threshold}" Learn
-                      th.text-center style="width: 60px;" Teach
-                  tbody
-                    - cc.courses.active.order(:name).where(id: @course_ids).each do |course|
-                      - student_params = {course_id: course.id, student_id: current_user.try(:id)}
-                      - teacher_params = {course_id: course.id, teacher_id: current_user.try(:id)}
-                      - already_requested_to_learn = user_signed_in? && @requested_courses_as_student.include?(course)
-                      - already_requested_to_teach = user_signed_in? && @requested_courses_as_teacher.include?(course)
+          - if cc.courses.active.count > 0
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a data-toggle="collapse" data-parent="#course-category-accordian" href="##{cc.code}" aria-expanded="#{i == 0 ? 'true' : 'false'}" class="#{i == 0 ? 'expanded' : 'collapsed'}"
+                    = "#{cc.name} (#{cc.code})"
+              .panel-collapse.collapse id="#{cc.code}" class="#{'in' if i == 0}" aria-expanded="#{i == 0 ? 'true' : 'false'}"
+                .panel-body
+                  table.table.table-hover
+                    thead
                       tr
-                        td = course.code
-                        td = course.name
-                        td.text-center
-                          - if already_requested_to_teach
-                            | -
-                          - elsif already_requested_to_learn
-                            = render "requested"
-                          - else
-                            .learn-button-wrapper data-toggle="tooltip" data-placement="right" title="" data-original-title="To unlock, pick more classes to teach" class="#{'has-tooltip' if @above_threshold}"
-                              = link_to "Learn", requests_path(student_params), method: :post, class: "btn btn-xs waves-effect waves-light m-b-5 #{@above_threshold ? 'disabled btn-default' : 'btn-primary'}"
+                        th style="width: 125px;" Code 
+                        th Name
+                        th.text-center style="width: 60px;" class="#{'disabled-text' if @above_threshold}" Learn
+                        th.text-center style="width: 60px;" Teach
+                    tbody
+                      - cc.courses.active.order(:name).where(id: @course_ids).each do |course|
+                        - student_params = {course_id: course.id, student_id: current_user.try(:id)}
+                        - teacher_params = {course_id: course.id, teacher_id: current_user.try(:id)}
+                        - already_requested_to_learn = user_signed_in? && @requested_courses_as_student.include?(course)
+                        - already_requested_to_teach = user_signed_in? && @requested_courses_as_teacher.include?(course)
+                        tr
+                          td = course.code
+                          td = course.name
+                          td.text-center
+                            - if already_requested_to_teach
+                              | -
+                            - elsif already_requested_to_learn
+                              = render "requested"
+                            - else
+                              .learn-button-wrapper data-toggle="tooltip" data-placement="right" title="" data-original-title="To unlock, pick more classes to teach" class="#{'has-tooltip' if @above_threshold}"
+                                = link_to "Learn", requests_path(student_params), method: :post, class: "btn btn-xs waves-effect waves-light m-b-5 #{@above_threshold ? 'disabled btn-default' : 'btn-primary'}"
 
-                        td.text-center
-                          - if already_requested_to_learn
-                            | -
-                          - elsif already_requested_to_teach
-                            = render "requested"
-                          - else
-                            = link_to "Teach", requests_path(teacher_params), method: :post, class: "btn-inverse btn btn-xs waves-effect waves-light m-b-5"
+                          td.text-center
+                            - if already_requested_to_learn
+                              | -
+                            - elsif already_requested_to_teach
+                              = render "requested"
+                            - else
+                              = link_to "Teach", requests_path(teacher_params), method: :post, class: "btn-inverse btn btn-xs waves-effect waves-light m-b-5"
 
   - if @searched_term.present?
     .row
