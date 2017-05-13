@@ -4,8 +4,10 @@ header#topnav
       .logo
         a.logo href="#{root_path}"
           = image_tag "https://s3.amazonaws.com/kellogg-in-a-bottle/logo.png", height: 30, class: "logo-image"
-          span
+          span.hidden-xs
             |  Kellogg in a Bottle
+          span.hidden-sm.hidden-md.hidden-lg
+            |  KiB
 
       .menu-extras
 
@@ -113,7 +115,7 @@ header#topnav
               = link_to "Sign up", new_user_registration_path
 
         .menu-item
-          a.navbar-toggle
+          a.navbar-toggle.hidden-sm.hidden-md.hidden-lg
             .lines
               span
               span
