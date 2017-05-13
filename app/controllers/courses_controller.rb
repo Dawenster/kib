@@ -8,7 +8,8 @@ class CoursesController < ApplicationController
       @course_ids = courses.pluck(:id)
       @searched_term = params[:s]
     else
-      @course_categories = CourseCategory.order(:name).joins(:courses).group("course_categories.id")
+      courses = Course.active
+      @course_categories = CourseCategory.where(id: courses.pluck(:course_category_id)).order(:name).joins(:courses).group("course_categories.id")
       @course_ids = Course.pluck(:id)
     end
     if current_user.present?
