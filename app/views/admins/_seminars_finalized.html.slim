@@ -14,7 +14,7 @@ h4
         th Students (A. Ratio)
         th Edit
     tbody
-      - finalized_seminars.each do |seminar|
+      - finalized_seminars.order(:id).each do |seminar|
         tr
           td = link_to seminar.id, rails_admin.show_path(model_name: "seminar", id: seminar.id)
           td = link_to seminar.course.code_and_name, rails_admin.show_path(model_name: "course", id: seminar.course.id)
