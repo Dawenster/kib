@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   REQUEST_RATIO_EXPLANATION = "You must teach 1 class for every #{REQUEST_RATIO_LIMIT} #{'class'.pluralize(REQUEST_RATIO_LIMIT)} you take. " \
                               "Users with ratios greater than or equal to #{REQUEST_RATIO_LIMIT} can only request to be teachers (until their ratio falls)."
 
-  ASSIGNMENT_RATIO_LIMIT = 2
+  ASSIGNMENT_RATIO_LIMIT = 5
   ASSIGNMENT_RATIO_EXPLANATION = "You must teach 1 class for every #{ASSIGNMENT_RATIO_LIMIT} #{'class'.pluralize(ASSIGNMENT_RATIO_LIMIT)} you take. " \
                                  "Users with ratios greater than or equal to #{ASSIGNMENT_RATIO_LIMIT} can only request to be teachers (until their ratio falls)."
 
@@ -103,7 +103,7 @@ class User < ActiveRecord::Base
   def assignment_ratio(num_student_requests_to_add = 0, num_teacher_requests_to_remove = 0)
     num_times_assigned_as_teacher = teacher_requests.assigned.count.to_f - num_teacher_requests_to_remove
     num_times_assigned_as_student = student_requests.assigned.count + num_student_requests_to_add
-    if num_times_assigned_as_teacher == 0.0 && num_times_assigned_as_student <= 2 # Only allow 2 free classes without teaching
+    if num_times_assigned_as_teacher == 0.0 && num_times_assigned_as_student <= 5 # Only allow 5 free classes without teaching
       num_times_assigned_as_student
     else
       num_times_assigned_as_student / num_times_assigned_as_teacher
